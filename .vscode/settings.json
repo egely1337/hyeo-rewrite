@@ -1,0 +1,11 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.includePath": [
+        "./src/"
+    ],
+    "files.associations": {
+        "typedefs.h": "c",
+        "hyeo.h": "c",
+        "multiboot.h": "c"
+    }
+}
