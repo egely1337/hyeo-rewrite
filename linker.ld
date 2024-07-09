@@ -1,7 +1,7 @@
 OUTPUT_FORMAT(elf32-i386)
 OUTPUT_ARCH(i386:i386)
 
-ENTRY(_main)
+ENTRY(_kentry)
 
 INPUT(
 	dump/kmain.o
@@ -9,8 +9,11 @@ INPUT(
 	dump/string.o
 	dump/io.o
 	dump/gdt.o
-	dump/gdt_asm.o
+	dump/gdt_load.o
 	dump/multiboot.o
+    dump/idt_load.o
+    dump/idt.o
+    dump/panic.o
 )
 
 OUTPUT(

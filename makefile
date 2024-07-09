@@ -7,7 +7,7 @@ OBJDIR = ./dump
 SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(SRCDIR)/*.asm) $(wildcard $(SRCDIR)/*.asm) 
 OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES)) $(patsubst $(SRCDIR)/%.asm,$(OBJDIR)/%.o,$(filter %.asm,$(SOURCES)))
 EXECUTABLE = myprogram 
-LD=i386-elf-ld
+LD=ld
 
 all: $(EXECUTABLE)
 

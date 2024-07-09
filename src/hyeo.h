@@ -6,4 +6,5 @@
 #include <io.h>
 #include <string.h>
 #include <gdt.h>
+#include <idt.h>
 #endif

@@ -1,39 +1,49 @@
-#include <terminal.h>  
+#include <terminal.h>
 
 terminal_t terminal = {
     .pos = {
         .x = 0,
         .y = 0
-    }
+    },
+    .buffer = (void*)0
 };
 const size_t TEXTMODE_BYTE_LENGHT = 2*TEXTMODE_WIDTH*TEXTMODE_HEIGHT;
 
 
 void terminal_init(void) {
+    if(terminal.buffer == (void*)0) hlt();
+
     memset(terminal.buffer, 0, TEXTMODE_BYTE_LENGHT);
     for(int i = 0; i < TEXTMODE_BYTE_LENGHT; i++) {
         textmode_char_t* ch = (textmode_char_t*)terminal.buffer + i;
-
         ch->ch = ' ';
         ch->color = COLOR_MAGENTA;
     }
 }
 
+void terminal_buffer_init(uint8_t *buffer)
+{
+    if(terminal.buffer != (void*)0) panic("Buffer already initialized.\n");
+    
+    memset(buffer, 0, TEXTMODE_BYTE_LENGHT);
+    terminal.buffer = buffer;
+}
+
 void terminal_print_char(uint8_t ch) {
     switch (ch)
     {
-    case '\n':
-        terminal.pos.x = 0;
-        terminal.pos.y++;
-        terminal_advance();
-        break;
-    default:
-        uint8_t* ptr = (uint8_t*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
-        textmode_char_t* character = (textmode_char_t*)ptr;
-        character->ch = ch;
-        character->color = COLOR_MAGENTA;
-        terminal_advance();
-        break;
+        case '\n':
+            terminal.pos.x = 0;
+            terminal.pos.y++;
+            terminal_advance();
+            break;
+        default:;
+            unsigned char* ptr = (unsigned char*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
+            textmode_char_t *character = (textmode_char_t*)ptr;
+            character->ch = ch;
+            character->color = COLOR_MAGENTA;
+            terminal_advance();
+            break;
     }
 }
 
@@ -75,7 +85,7 @@ void terminal_print_string(const char *str1)
 
 void terminal_update_cursor(void)
 {
-    uint16_t pos = ((terminal.pos.y * TEXTMODE_WIDTH) + terminal.pos.x) - 1;
+    uint16_t pos = ((terminal.pos.y * TEXTMODE_WIDTH) + terminal.pos.x);
     outb(0x3D4, 0x0F);
 	outb(0x3D5, (uint8_t) (pos & 0xFF));
 	outb(0x3D4, 0x0E);

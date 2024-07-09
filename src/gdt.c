@@ -21,7 +21,7 @@ void gdt_set_gate(
 
 void gdt_install(void) {
     gp.limit = (sizeof(gdt_entry_t) * 3) - 1;
-    gp.base = &gdt;
+    gp.base = (uint32_t)&gdt;
 
     gdt_set_gate(0, 0, 0, 0, 0);
     gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);

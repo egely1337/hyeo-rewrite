@@ -1,9 +1,10 @@
-#ifndef PRINT_H
-#define PRINT_H
+#ifndef TERMINAL_H
+#define TERMINAL_H
 
 #include <typedefs.h>
 #include <io.h>
 #include <string.h>
+#include <panic.h>
 
 #define VGA_ADDR (void*) 0xB8000
 #define TEXTMODE_WIDTH 80
@@ -32,10 +33,11 @@ typedef struct {
     terminal_vec2 pos;
 
     // * I know this is a mess, but believe me i am really fucking lazy.
-    char buffer[TEXTMODE_HEIGHT * TEXTMODE_WIDTH * sizeof(textmode_char_t)];
+    uint8_t* buffer;
 } __attribute__((packed)) terminal_t;
 
 void terminal_init(void);
+void terminal_buffer_init(uint8_t* buffer);
 void terminal_update(void);
 void terminal_print_char(uint8_t ch);
 void terminal_print_string(const char* str1);
