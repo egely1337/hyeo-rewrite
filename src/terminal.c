@@ -23,8 +23,6 @@ void terminal_init(void) {
 
 void terminal_buffer_init(uint8_t *buffer)
 {
-    if(terminal.buffer != (void*)0) panic("Buffer already initialized.\n");
-    
     memset(buffer, 0, TEXTMODE_BYTE_LENGHT);
     terminal.buffer = buffer;
 }

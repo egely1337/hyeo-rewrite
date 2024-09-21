@@ -4,7 +4,8 @@
 #include <typedefs.h>
 #include <terminal.h>
 #include <io.h>
-#include <string.h>
 #include <gdt.h>
 #include <idt.h>
+#include <isr.h>
+#include <kpanic.h>
 #endif

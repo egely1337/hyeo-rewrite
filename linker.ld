@@ -4,16 +4,16 @@ OUTPUT_ARCH(i386:i386)
 ENTRY(_kentry)
 
 INPUT(
+    dump/kernel.o
+    dump/kpanic.o
 	dump/kmain.o
 	dump/terminal.o
 	dump/string.o
 	dump/io.o
 	dump/gdt.o
-	dump/gdt_load.o
 	dump/multiboot.o
-    dump/idt_load.o
     dump/idt.o
-    dump/panic.o
+    dump/isr.o
 )
 
 OUTPUT(
@@ -21,6 +21,7 @@ OUTPUT(
 )
 
 SECTIONS {
+    KERNEL_START = .;
     . = 0x8000;
 
     .text : ALIGN(0x1000){
@@ -39,5 +40,7 @@ SECTIONS {
         *(COMMON)
         *(.bss)
     }
+
+    KERNEL_END = .;
 }
 

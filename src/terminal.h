@@ -2,9 +2,8 @@
 #define TERMINAL_H
 
 #include <typedefs.h>
-#include <io.h>
 #include <string.h>
-#include <panic.h>
+#include <io.h>
 
 #define VGA_ADDR (void*) 0xB8000
 #define TEXTMODE_WIDTH 80
@@ -32,7 +31,7 @@ typedef struct
 typedef struct {
     terminal_vec2 pos;
 
-    // * I know this is a mess, but believe me i am really fucking lazy.
+    // I know this is a mess, but believe me i am really fucking lazy.
     uint8_t* buffer;
 } __attribute__((packed)) terminal_t;
 

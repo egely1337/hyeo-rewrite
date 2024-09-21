@@ -1,0 +1,994 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"idt",
+				"idt_install"
+			],
+			[
+				"gdt",
+				"gdt_install"
+			],
+			[
+				"NextAPiR",
+				"NextApiResponse"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Package Control Messages\n========================\n\n\nLSP-clangd\n----------\n\n  ## Installation\n  - Install LSP and LSP-clangd from Package Control\n  - Install clangd using your package manager or let this plugin install clangd for you\n  \n  ## Usage\n  \n  By default, clangd will assume your code is built as clang some_file.cc, and you’ll probably get errors about missing #included files, etc. \n  \n  For complex projects clangd needs to know your build flags. This can be done using a `compile_commands.json` or `compile_flags.txt` file.\n  \n  See https://clangd.llvm.org/installation#project-setup\n",
+			"settings":
+			{
+				"buffer_size": 596,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			},
+			"undo_stack":
+			[
+				[
+					1,
+					1,
+					"package_control_message",
+					{
+						"message": "\n\nLSP-clangd\n----------\n\n  ## Installation\n  - Install LSP and LSP-clangd from Package Control\n  - Install clangd using your package manager or let this plugin install clangd for you\n  \n  ## Usage\n  \n  By default, clangd will assume your code is built as clang some_file.cc, and you’ll probably get errors about missing #included files, etc. \n  \n  For complex projects clangd needs to know your build flags. This can be done using a `compile_commands.json` or `compile_flags.txt` file.\n  \n  See https://clangd.llvm.org/installation#project-setup\n"
+					},
+					"AQAAAAAAAAAAAAAAVAIAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8"
+				]
+			]
+		},
+		{
+			"file": "src/kmain.c",
+			"settings":
+			{
+				"buffer_size": 277,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					9,
+					1,
+					"insert",
+					{
+						"characters": "\ngdt"
+					},
+					"BQAAAKIAAAAAAAAAowAAAAAAAAAAAAAAowAAAAAAAACnAAAAAAAAAAAAAACnAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqQAAAAAAAAAAAAAAqQAAAAAAAACqAAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKIAAAAAAAAAogAAAAAAAAAAAAAAAIBmQA"
+				],
+				[
+					12,
+					2,
+					"left_delete",
+					null,
+					"AgAAAKcAAAAAAAAApwAAAAAAAAADAAAAZ2R0owAAAAAAAACjAAAAAAAAAAQAAAAgICAg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKoAAAAAAAAApwAAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					14,
+					1,
+					"left_delete",
+					null,
+					"AQAAAKIAAAAAAAAAogAAAAAAAAABAAAACg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKMAAAAAAAAAowAAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					26,
+					1,
+					"insert",
+					{
+						"characters": "\ngdt"
+					},
+					"BQAAAKIAAAAAAAAAowAAAAAAAAAAAAAAowAAAAAAAACnAAAAAAAAAAAAAACnAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqQAAAAAAAAAAAAAAqQAAAAAAAACqAAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACiAAAAAAAAAKIAAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					29,
+					2,
+					"left_delete",
+					null,
+					"AgAAAKMAAAAAAAAAowAAAAAAAAAHAAAAICAgIGdkdKIAAAAAAAAAogAAAAAAAAABAAAACg",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACqAAAAAAAAAKMAAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					24,
+					1,
+					"insert",
+					{
+						"characters": "\nter"
+					},
+					"BQAAAA0BAAAAAAAADgEAAAAAAAAAAAAADgEAAAAAAAASAQAAAAAAAAAAAAASAQAAAAAAABMBAAAAAAAAAAAAABMBAAAAAAAAFAEAAAAAAAAAAAAAFAEAAAAAAAAVAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADQEAAAAAAAANAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					36,
+					1,
+					"insert",
+					{
+						"characters": "ter"
+					},
+					"BAAAABIBAAAAAAAAEwEAAAAAAAAAAAAAEwEAAAAAAAATAQAAAAAAAAMAAAB0ZXITAQAAAAAAABQBAAAAAAAAAAAAABQBAAAAAAAAFQEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEgEAAAAAAAAVAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					45,
+					1,
+					"insert",
+					{
+						"characters": "ter"
+					},
+					"BAAAABIBAAAAAAAAEwEAAAAAAAAAAAAAEwEAAAAAAAATAQAAAAAAAAMAAAB0ZXITAQAAAAAAABQBAAAAAAAAAAAAABQBAAAAAAAAFQEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEgEAAAAAAAAVAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					46,
+					1,
+					"insert_completion",
+					{
+						"completion": "lsp_select_completion {\"index\":2,\"session_name\":\"clangd\"}",
+						"format": "command",
+						"keep_prefix": true,
+						"must_insert": false,
+						"query_change_id":
+						[
+							32,
+							45,
+							4
+						],
+						"trigger": "terminal_init"
+					},
+					"AwAAABIBAAAAAAAAEgEAAAAAAAADAAAAdGVyEgEAAAAAAAAhAQAAAAAAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFQEAAAAAAAAVAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					51,
+					2,
+					"left_delete",
+					null,
+					"AgAAAOkAAAAAAAAA6QAAAAAAAAAUAAAAICAgIHRlcm1pbmFsX2luaXQoKTvoAAAAAAAAAOgAAAAAAAAAAQAAAAo",
+					"AQAAAAAAAAABAAAA/QAAAAAAAADpAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					75,
+					1,
+					"insert",
+					{
+						"characters": "\ngd"
+					},
+					"BAAAALgAAAAAAAAAuQAAAAAAAAAAAAAAuQAAAAAAAAC9AAAAAAAAAAAAAAC9AAAAAAAAAL4AAAAAAAAAAAAAAL4AAAAAAAAAvwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAuAAAAAAAAAC4AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					76,
+					4,
+					"left_delete",
+					null,
+					"BAAAAL4AAAAAAAAAvgAAAAAAAAABAAAAZL0AAAAAAAAAvQAAAAAAAAABAAAAZ7kAAAAAAAAAuQAAAAAAAAAEAAAAICAgILgAAAAAAAAAuAAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAvwAAAAAAAAC/AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					77,
+					1,
+					"insert",
+					{
+						"characters": "g"
+					},
+					"AQAAALgAAAAAAAAAuQAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAuAAAAAAAAAC4AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					78,
+					1,
+					"left_delete",
+					null,
+					"AQAAALgAAAAAAAAAuAAAAAAAAAABAAAAZw",
+					"AQAAAAAAAAABAAAAuQAAAAAAAAC5AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					79,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AgAAALgAAAAAAAAAuQAAAAAAAAAAAAAAuQAAAAAAAAC9AAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAuAAAAAAAAAC4AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					82,
+					1,
+					"insert",
+					{
+						"characters": "g"
+					},
+					"AQAAAL0AAAAAAAAAvgAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAvQAAAAAAAAC9AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					87,
+					1,
+					"left_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAI2luY2x1ZGUgInRlcm1pbmFsLmgi",
+					"AQAAAAAAAAABAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					89,
+					1,
+					"left_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					92,
+					2,
+					"left_delete",
+					null,
+					"AgAAAKMAAAAAAAAAowAAAAAAAAAFAAAAICAgIGeiAAAAAAAAAKIAAAAAAAAAAQAAAAo",
+					"AQAAAAAAAAABAAAAowAAAAAAAACoAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					111,
+					1,
+					"insert",
+					{
+						"characters": "\ngdt"
+					},
+					"BQAAAKIAAAAAAAAAowAAAAAAAAAAAAAAowAAAAAAAACnAAAAAAAAAAAAAACnAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqQAAAAAAAAAAAAAAqQAAAAAAAACqAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAogAAAAAAAACiAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					114,
+					2,
+					"left_delete",
+					null,
+					"AgAAAKMAAAAAAAAAowAAAAAAAAAHAAAAICAgIGdkdKIAAAAAAAAAogAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACjAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					118,
+					1,
+					"left_delete",
+					null,
+					"AQAAABABAAAAAAAAEAEAAAAAAAAIAAAAICBobHQoKTs",
+					"AQAAAAAAAAABAAAAGAEAAAAAAAAQAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					119,
+					1,
+					"insert",
+					{
+						"characters": "\thlt"
+					},
+					"BAAAABABAAAAAAAAEgEAAAAAAAAAAAAAEgEAAAAAAAATAQAAAAAAAAAAAAATAQAAAAAAABQBAAAAAAAAAAAAABQBAAAAAAAAFQEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEAEAAAAAAAAQAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					120,
+					1,
+					"insert_snippet",
+					{
+						"contents": "($0)"
+					},
+					"AQAAABUBAAAAAAAAFwEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFQEAAAAAAAAVAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					122,
+					1,
+					"insert",
+					{
+						"characters": ";"
+					},
+					"AQAAABcBAAAAAAAAGAEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFwEAAAAAAAAXAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					139,
+					1,
+					"reindent",
+					null,
+					"AQAAAKMAAAAAAAAApwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAowAAAAAAAACjAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					140,
+					1,
+					"insert",
+					{
+						"characters": "gdt"
+					},
+					"AwAAAKcAAAAAAAAAqAAAAAAAAAAAAAAAqAAAAAAAAACpAAAAAAAAAAAAAACpAAAAAAAAAKoAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwAAAAAAAACnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					141,
+					3,
+					"left_delete",
+					null,
+					"AwAAAKkAAAAAAAAAqQAAAAAAAAABAAAAdKgAAAAAAAAAqAAAAAAAAAABAAAAZKcAAAAAAAAApwAAAAAAAAABAAAAZw",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACqAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					142,
+					1,
+					"insert",
+					{
+						"characters": "res"
+					},
+					"AwAAAKcAAAAAAAAAqAAAAAAAAAAAAAAAqAAAAAAAAACpAAAAAAAAAAAAAACpAAAAAAAAAKoAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwAAAAAAAACnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					144,
+					1,
+					"left_delete",
+					null,
+					"AQAAAKcAAAAAAAAApwAAAAAAAAADAAAAcmVz",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					149,
+					1,
+					"insert",
+					{
+						"characters": "gdt"
+					},
+					"AwAAAKcAAAAAAAAAqAAAAAAAAAAAAAAAqAAAAAAAAACpAAAAAAAAAAAAAACpAAAAAAAAAKoAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwAAAAAAAACnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					152,
+					2,
+					"left_delete",
+					null,
+					"AgAAAKMAAAAAAAAAowAAAAAAAAAHAAAAICAgIGdkdKIAAAAAAAAAogAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACjAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					154,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AgAAAKIAAAAAAAAAowAAAAAAAAAAAAAAowAAAAAAAACnAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAogAAAAAAAACiAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					173,
+					2,
+					"left_delete",
+					null,
+					"AwAAAP0AAAAAAAAA/QAAAAAAAAATAAAAICAgIHRlcm1pbmFsX2luaXQoKaMAAAAAAAAAowAAAAAAAAAEAAAAICAgIPgAAAAAAAAA+AAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAA/QAAAAAAAAAQAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					174,
+					1,
+					"insert",
+					{
+						"characters": "\ngdt"
+					},
+					"BQAAAPgAAAAAAAAA+QAAAAAAAAAAAAAA+QAAAAAAAAD9AAAAAAAAAAAAAAD9AAAAAAAAAP4AAAAAAAAAAAAAAP4AAAAAAAAA/wAAAAAAAAAAAAAA/wAAAAAAAAAAAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA+AAAAAAAAAD4AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					178,
+					3,
+					"left_delete",
+					null,
+					"AwAAAP0AAAAAAAAA/QAAAAAAAAADAAAAZ2R0+QAAAAAAAAD5AAAAAAAAAAQAAAAgICAg+AAAAAAAAAD4AAAAAAAAAAEAAAAK",
+					"AQAAAAAAAAABAAAAAAEAAAAAAAD9AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					186,
+					1,
+					"insert",
+					{
+						"characters": "\ngdt"
+					},
+					"BQAAAKIAAAAAAAAAowAAAAAAAAAAAAAAowAAAAAAAACnAAAAAAAAAAAAAACnAAAAAAAAAKgAAAAAAAAAAAAAAKgAAAAAAAAAqQAAAAAAAAAAAAAAqQAAAAAAAACqAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAogAAAAAAAACiAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					187,
+					1,
+					"insert_completion",
+					{
+						"completion": "gdt_install",
+						"format": "text",
+						"keep_prefix": false,
+						"must_insert": false,
+						"trigger": "gdt_install"
+					},
+					"AgAAAKcAAAAAAAAApwAAAAAAAAADAAAAZ2R0pwAAAAAAAACyAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACqAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					189,
+					1,
+					"left_delete",
+					null,
+					"AQAAAKcAAAAAAAAApwAAAAAAAAALAAAAZ2R0X2luc3RhbGw",
+					"AQAAAAAAAAABAAAAsgAAAAAAAACnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					192,
+					1,
+					"insert",
+					{
+						"characters": "gdt"
+					},
+					"AwAAAKcAAAAAAAAAqAAAAAAAAAAAAAAAqAAAAAAAAACpAAAAAAAAAAAAAACpAAAAAAAAAKoAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAApwAAAAAAAACnAAAAAAAAAAAAAAAAAE5A"
+				],
+				[
+					193,
+					5,
+					"left_delete",
+					null,
+					"BQAAAKkAAAAAAAAAqQAAAAAAAAABAAAAdKgAAAAAAAAAqAAAAAAAAAABAAAAZKcAAAAAAAAApwAAAAAAAAABAAAAZ6MAAAAAAAAAowAAAAAAAAAEAAAAICAgIKIAAAAAAAAAogAAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAqgAAAAAAAACqAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"clangd",
+				"Preferences: LSP-clangd Settings"
+			],
+			[
+				"rest",
+				"LSP: Restart Server"
+			],
+			[
+				"restar",
+				"LSP: Restart Server"
+			],
+			[
+				"lsp settin",
+				"Preferences: LSP Settings"
+			],
+			[
+				"lsp-clangd",
+				"Preferences: LSP-clangd Settings"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove package",
+				"Package Control: Remove Package"
+			],
+			[
+				"lsp sett",
+				"Preferences: LSP Settings"
+			],
+			[
+				"res",
+				"LSP: Restart Server"
+			],
+			[
+				"restart",
+				"LSP: Restart Server"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"resta",
+				"LSP: Restart Server"
+			],
+			[
+				"anf",
+				"ANF: New File"
+			],
+			[
+				"LSP: R",
+				"LSP: Restart Server"
+			],
+			[
+				"ani",
+				"ANF: New File"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"resat",
+				"LSP: Restart Server"
+			],
+			[
+				"ANF ",
+				"ANF: New File"
+			],
+			[
+				"LSP: RESTA",
+				"LSP: Restart Server"
+			],
+			[
+				"resar",
+				"LSP: Restart Server"
+			],
+			[
+				"lsp res",
+				"LSP: Restart Server"
+			],
+			[
+				"lspsettin",
+				"Preferences: LSP Settings"
+			],
+			[
+				"lsp",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"terminal",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"theme ",
+				"UI: Select Theme"
+			],
+			[
+				"instlal pa",
+				"Package Control: Install Package"
+			],
+			[
+				"new fi",
+				"ANF: New File"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"termius",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"packages",
+				"Package Control: List Packages"
+			],
+			[
+				"remove",
+				"Terminus Utilities: Remove User Theme"
+			],
+			[
+				"enable gl",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"lsp: use",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"lsp rust",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"lsp enab",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"lsp enable",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"TERM",
+				"Terminus: Close"
+			],
+			[
+				"rust",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"lspenab",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"lsp ",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"installp",
+				"Package Control: Install Package"
+			],
+			[
+				"removepa",
+				"Package Control: Remove Package"
+			],
+			[
+				"term",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"LSP-S",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"enable",
+				"LSP: Enable Language Server in Project"
+			],
+			[
+				"lsp enabl",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"packackge remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"command palet",
+				"Preferences: Terminus Command Palette"
+			],
+			[
+				"termi",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"lsp-rust-",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"remove packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"debug log",
+				"Rust: Open Debug Log"
+			],
+			[
+				"preferences: rust l",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"remove packe",
+				"Package Control: Remove Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"LSP-RU",
+				"Preferences: LSP-rust-analyzer Settings"
+			],
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package cont",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 214.0,
+		"history":
+		[
+			"LSP: Enable Language Server GLobally",
+			"ls",
+			"clear",
+			"LSP"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/egely/Projects/hyeo-rewrite",
+		"/home/egely/Projects/hyeo-rewrite/src"
+	],
+	"file_history":
+	[
+		"/home/egely/Projects/hyeo-rewrite/src/compile_flags.txt",
+		"/home/egely/Projects/hyeo-rewrite/src/.clangd",
+		"/home/egely/.config/sublime-text/Packages/User/LSP.sublime-settings",
+		"/home/egely/.config/sublime-text/Packages/LSP/LSP.sublime-settings",
+		"/home/egely/Projects/hyeo-rewrite/src/kmain.c",
+		"/home/egely/Projects/hyeo-rewrite/.clangd",
+		"/home/egely/Projects/hyeo-rewrite/.clang",
+		"/home/egely/Projects/hyeo-rewrite/compiler_flags.txt",
+		"/home/egely/Projects/egely1337-com/src/pages/api/hello.ts",
+		"/home/egely/Projects/egely1337-com/api/hello.ts",
+		"/home/egely/Projects/egely1337-com/src/pages/gallery.tsx",
+		"/home/egely/Projects/egely1337-com/main.c",
+		"/home/egely/Projects/egely1337-com/src/pages/blogs.tsx",
+		"/home/egely/Projects/egely1337-com/src/pages/_app.tsx",
+		"/home/egely/Projects/egely1337-com/src/pages/api/index.ts",
+		"/home/egely/Projects/egely1337-com/src/pages/index.tsx",
+		"/home/egely/Projects/egely1337-com/src/pages/api/create.ts",
+		"/home/egely/Projects/rust-nitro-spammer/src/main.rs",
+		"/home/egely/.config/sublime-text/Packages/User/c.sublime-build",
+		"/home/egely/Projects/sublime-c/project.sublime-project",
+		"/home/egely/Projects/sublime-c/main.c"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								381,
+								381
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_indent": false,
+							"gutter": false,
+							"lsp_uri": "buffer:53",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"tab_width": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/kmain.c",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_uri": "file:///home/egely/Projects/hyeo-rewrite/src/kmain.c",
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 79.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0
+	},
+	"output.Terminus":
+	{
+		"height": 389.0
+	},
+	"output.Terminus 2":
+	{
+		"height": 240.0
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "hyeo.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main.c",
+				"src/kmain.c"
+			],
+			[
+				"main",
+				"src/kmain.c"
+			],
+			[
+				"inde.ts",
+				"src/pages/index.tsx"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 403.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

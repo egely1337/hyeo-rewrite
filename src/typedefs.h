@@ -7,4 +7,6 @@ typedef unsigned short uint16_t;
 typedef unsigned int size_t;
 typedef char byte;
 #define hlt() for(;;)
+#define cli() __asm__ __volatile__("cli");
+#define sti() __asm__ __volatile__("sti");
 #endif

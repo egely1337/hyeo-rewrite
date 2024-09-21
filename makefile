@@ -1,7 +1,7 @@
 CC = gcc
 AS = nasm
 ASFLAGS = -f elf32
-CFLAGS = -ffreestanding -m32 -g -c -I ./src
+CFLAGS = -ffreestanding -m32 -g -Ttext 0x8000 -c -I ./src
 SRCDIR = ./src
 OBJDIR = ./dump
 SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(SRCDIR)/*.asm) $(wildcard $(SRCDIR)/*.asm) 
@@ -13,7 +13,7 @@ all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 	$(LD) -T linker.ld
-	grub-mkrescue -o hyeo.iso ./iso_root/
+	grub2-mkrescue -o hyeo.iso ./iso_root/
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@

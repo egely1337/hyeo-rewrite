@@ -2,6 +2,10 @@
 #define IDT_H
 #include <typedefs.h>
 #include <string.h>
+
+#define LOW(address) (uint16_t)((address) & 0xFFFF)
+#define HIGH(address) (uint16_t)((address) >> 16)
+
 typedef struct
 {
     uint16_t base_lo;
@@ -16,11 +20,6 @@ typedef struct {
     uint32_t base;
 } __attribute__((packed)) idt_ptr;
 
-idt_entry_t idt[256];
-idt_ptr idpt;
-
-
-void idt_set_gate( uint8_t num, unsigned long base, uint16_t sel, unsigned char flags);
+void set_idt_gate(int num, uint32_t handler);
 void idt_install(void);
-extern void idt_load(void);
 #endif

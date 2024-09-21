@@ -1,20 +1,24 @@
 #include <idt.h>
 
-void idt_set_gate(
-    uint8_t num,
-    unsigned long base,
-    uint16_t sel,
-    unsigned char flags
+#define IDT_ENTRIES 256
+idt_entry_t idt[IDT_ENTRIES];
+idt_ptr idpt;
+
+void set_idt_gate(
+    int num,
+    uint32_t handler
 ) {
-    idt[num].base_lo = (uint16_t)(base & 0xFFFF);
-    idt[num].base_hi = (uint16_t)((base >> 16) && 0xFFFF);
-    idt[num].sel = sel;
-    idt[num].flags = flags;
+    idt[num].base_lo = LOW(handler);
+    idt[num].base_hi = HIGH(handler);
+    idt[num].sel = 0x08;
+    idt[num].always0 = 0;
+    idt[num].flags = 0x8E;
 }
 
 void idt_install(void) {
-    idpt.limit = (sizeof(idt_entry_t) * 256) - 1;
-    idpt.base = (uint32_t)&idt[0];
-    memset(&idt[0], 0, sizeof(idt_entry_t)*256);
-    idt_load();
+    idpt.base = (int)&idt;
+    idpt.limit = IDT_ENTRIES * sizeof(idt_entry_t) - 1;
+
+    // load idt
+    __asm__ __volatile__("lidt %0" : : "m" (idpt));
 }
