@@ -13,10 +13,9 @@
 // 9. TODO: Initialize scheduling        
 // --------------------------------
 
-
 #include <hyeo.h>
-
 uint8_t terminal_buffer[TEXTMODE_HEIGHT*TEXTMODE_WIDTH*sizeof(textmode_char_t)*2] = {0};
+
 extern int _kentry() {
     cli();
     terminal_buffer_init(&terminal_buffer[0]);  
