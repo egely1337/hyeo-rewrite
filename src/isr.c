@@ -1,3 +1,9 @@
+/*
+ *  file: isc.c
+ *  author: egely1337
+ *  purpose: interrupt service register file 
+ */
+
 #include <isr.h>
 #include <idt.h>
 #include <io.h>

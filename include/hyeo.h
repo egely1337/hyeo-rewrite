@@ -8,4 +8,5 @@
 #include <idt.h>
 #include <isr.h>
 #include <kpanic.h>
+#include <timer.h>
 #endif

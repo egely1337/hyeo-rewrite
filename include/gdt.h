@@ -19,5 +19,5 @@ typedef struct
 } __attribute__((packed)) gdt_ptr_t;
 
 void gdt_install(void);
-extern void gdt_flush(void);
+HYEO_EXPORT void gdt_flush(void);
 #endif

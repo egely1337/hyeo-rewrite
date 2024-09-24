@@ -1,3 +1,9 @@
+/*
+ *  file: io.c
+ *  author: egely1337
+ *  purpose: in/out assembly functions 
+ */
+
 #include <io.h>
 
 void outb(uint16_t port, uint8_t data){

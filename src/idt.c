@@ -1,3 +1,9 @@
+/*
+ *  file: idt.c
+ *  author: egely1337
+ *  purpose: interrupt descriptor table file 
+ */
+
 #include <idt.h>
 
 #define IDT_ENTRIES 256
@@ -8,8 +14,8 @@ void set_idt_gate(
     int num,
     uint32_t handler
 ) {
-    idt[num].base_lo = LOW(handler);
-    idt[num].base_hi = HIGH(handler);
+    idt[num].base_lo = LOW_16(handler);
+    idt[num].base_hi = HIGH_16(handler);
     idt[num].sel = 0x08;
     idt[num].always0 = 0;
     idt[num].flags = 0x8E;

@@ -1,3 +1,9 @@
+/*
+ *  file: terminal.c
+ *  author: egely1337
+ *  purpose: terminal driver 
+ */
+
 #include <terminal.h>
 
 terminal_t terminal = {

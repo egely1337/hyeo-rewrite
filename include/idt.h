@@ -3,9 +3,6 @@
 #include <typedefs.h>
 #include <string.h>
 
-#define LOW(address) (uint16_t)((address) & 0xFFFF)
-#define HIGH(address) (uint16_t)((address) >> 16)
-
 typedef struct
 {
     uint16_t base_lo;

@@ -9,4 +9,12 @@ typedef char byte;
 #define hlt() for(;;)
 #define cli() __asm__ __volatile__("cli");
 #define sti() __asm__ __volatile__("sti");
+#define LOW_16(address) (uint16_t)((address) & 0xFFFF)
+#define HIGH_16(address) (uint16_t)((address) >> 16)
+
+
+
+#define HYEO_EXPORT extern
+#define __FORCEINLINE__ inline __attribute__((always_inline))
+
 #endif

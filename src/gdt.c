@@ -1,6 +1,12 @@
+/*
+ *  file: gdt.c
+ *  author: egely1337
+ *  purpose: global descriptor file 
+ */
+
 #include <gdt.h>
 
-gdt_entry_t gdt[5   ];
+gdt_entry_t gdt[5];
 gdt_ptr_t gp;
 
 void gdt_set_gate(

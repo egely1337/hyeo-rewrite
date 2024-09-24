@@ -1,4 +1,10 @@
-#include "string.h"
+/*
+ *  file: string.c
+ *  author: egely1337
+ *  purpose: string manipulator 
+ */
+
+#include <string.h>
 
 void memcpy(void *dst, void *src, size_t length)
 {   

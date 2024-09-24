@@ -14,6 +14,7 @@ INPUT(
 	dump/multiboot.o
     dump/idt.o
     dump/isr.o
+    dump/timer.o
 )
 
 OUTPUT(
