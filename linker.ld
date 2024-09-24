@@ -15,6 +15,7 @@ INPUT(
     dump/idt.o
     dump/isr.o
     dump/timer.o
+    dump/sched.o
 )
 
 OUTPUT(

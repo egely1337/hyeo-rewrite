@@ -77,9 +77,9 @@ char *EXCEPTION_CODES[] = {
     "No Coprocessor",
     "Double Fault",
     "Coprocessor Segment Overrun",
-    "bad tss",
+    "Bad TSS",
     "Segment Not Present",
-    "stack fault",
+    "Stack Fault",
     "general protection fault",
     "Page Fault",
     "Unknown Interrupt",
@@ -115,7 +115,7 @@ void isr_install(void) {
     outb(0x21, 0x0);
     outb(0xA1, 0x0); 
     
-
+    // ISR
     set_idt_gate(0, (uint32_t)isr0);
     set_idt_gate(1, (uint32_t)isr1);
     set_idt_gate(2, (uint32_t)isr2);
@@ -149,6 +149,7 @@ void isr_install(void) {
     set_idt_gate(30, (uint32_t)isr30);
     set_idt_gate(31, (uint32_t)isr31);
 
+    // IRQ
     set_idt_gate(32, (uint32_t)irq0);
     set_idt_gate(33, (uint32_t)irq1);
     set_idt_gate(34, (uint32_t)irq2);

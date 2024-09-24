@@ -152,3 +152,18 @@ isr31:
     ;; - IRQ END --
 
 ;; -- INTERRUPTS END --
+
+;; SWITCH-CONTEXT START
+[global switch_context]
+;; TODO: [extern current_task]
+
+
+;; C declaration:
+;;  void switch_context(void);
+;; WARNING: Caller is expected to disable IRQs before calling, and enable IRQs again after function returns
+;; TODO: switch_context
+switch_context:
+    ret
+
+
+;; SWITCH-CONTEXT END
