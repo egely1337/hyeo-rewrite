@@ -9,4 +9,6 @@
 #include <isr.h>
 #include <kpanic.h>
 #include <timer.h>
+#include <sched.h>
+#include <reboot.h>
 #endif

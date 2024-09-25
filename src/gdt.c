@@ -35,5 +35,4 @@ void gdt_install(void) {
     gdt_set_gate(3, 0, 0xFFFFFFFF, 0b11111010, 0b11001111); // User mode code segment
     gdt_set_gate(4, 0, 0xFFFFFFFF, 0b11110010, 0b11001111); // User mode data segment
     gdt_flush();
-    gdt_flush();
 }

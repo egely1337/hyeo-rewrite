@@ -4,4 +4,6 @@
 void memcpy(void* dst, void *src, size_t length);
 void memset(void* dst, uint8_t val, size_t length);
 int strlen(const char* str);
+
+#define MAX_STRING_LENGHT 512
 #endif

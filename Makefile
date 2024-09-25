@@ -24,7 +24,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.asm
 $(EXECUTABLE): $(OBJECTS)
 	@$(LD) -T linker.ld
 	@echo "LD 	$@"
-	@grub2-mkrescue -o $< ./iso_root/
-	@echo "MKRESCUE 	$<"
+	@grub2-mkrescue -o $@ ./iso_root/
+	@echo "MKRESCUE 	$@"
 clean:
 	rm -f $(OBJDIR)/*.o $(EXECUTABLE)

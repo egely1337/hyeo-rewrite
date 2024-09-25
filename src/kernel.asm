@@ -155,15 +155,62 @@ isr31:
 
 ;; SWITCH-CONTEXT START
 [global switch_context]
-;; TODO: [extern current_task]
+[extern current_proc]
+[extern next_proc]
 
 
 ;; C declaration:
-;;  void switch_context(void);
-;; WARNING: Caller is expected to disable IRQs before calling, and enable IRQs again after function returns
-;; TODO: switch_context
+;; void switch_context(context_t* old, context_t* new);
+global switch_context
 switch_context:
-    ret
+    cli
 
+    ;; get first argument to edx
+    mov edx, [esp + 4] ; edx = from
+    mov eax, [esp + 8] ; eax = to
+    
+    ; save registers
+    pusha
 
-;; SWITCH-CONTEXT END
+    ;; eax
+    mov [edx + 0], eax
+    mov eax, [edx + 0]
+
+    ;; save and load ecx
+    mov [edx + 4], ebp
+    mov ebp, [eax + 4] 
+
+    ;; save and load edx
+    mov [edx + 8], edx
+    mov edx, [eax + 8]
+
+    ;; save and load ebx
+    ;mov [edx + 12], ebx 
+    mov ebx, [eax + 12]
+
+    ;; save and load esp
+    ;mov [edx + 16], esp
+    mov esp, [eax + 16]
+
+    ;; save and load ebp
+    mov [edx + 20], ebp
+    mov ebp, [eax + 20]
+
+    ;; save and load ebp
+    mov [edx + 24], esi
+    mov esi, [eax + 24]
+
+    ;; save and load edi
+    mov [edx + 28], edi
+    mov edi, [eax + 28] 
+
+    ;; go back interrupts
+    sti
+
+    ;; jump!
+    jmp dword [eax+36]
+
+    ;; return registers
+    popa
+
+    iret

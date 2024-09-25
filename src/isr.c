@@ -9,6 +9,7 @@
 #include <io.h>
 #include <terminal.h>
 #include <kpanic.h>
+#include <sched.h>
 
 IsrHandler _idt[256];
 

@@ -27,7 +27,7 @@ int strlen(const char *str)
     int i = 0;
     uint8_t* ptr = (uint8_t*)str;
 
-    while(*ptr != '\0') {
+    while(*ptr != '\0' && i < MAX_STRING_LENGHT) {
         i++;
         ptr++;
     }

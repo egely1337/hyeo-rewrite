@@ -41,7 +41,7 @@ void terminal_print_char(uint8_t ch) {
             terminal.pos.y++;
             terminal_advance();
             break;
-        default:;
+        default:
             unsigned char* ptr = (unsigned char*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
             textmode_char_t *character = (textmode_char_t*)ptr;
             character->ch = ch;
@@ -57,7 +57,7 @@ void terminal_advance(void) {
         terminal.pos.y++;
     } else terminal.pos.x++;
 
-    terminal_update_cursor();
+    //terminal_update_cursor();
 }
 
 void terminal_cursor_enable(void)
@@ -71,15 +71,15 @@ void terminal_cursor_enable(void)
 void terminal_update(void)
 {
     uint8_t* ptr = VGA_ADDR;
-    memset(VGA_ADDR, 0, TEXTMODE_BYTE_LENGHT);
-    memcpy(VGA_ADDR, terminal.buffer, TEXTMODE_BYTE_LENGHT);
+    //memset(VGA_ADDR, 0, TEXTMODE_BYTE_LENGHT);
+    //memcpy(VGA_ADDR, terminal.buffer, TEXTMODE_BYTE_LENGHT);
 }
 
 void terminal_print_string(const char *str1)
 {
     uint8_t* ptr = (uint8_t*)str1;
 
-    while(*ptr != '\0') {
+    while(*ptr != '\0' && *ptr != 0) {
         terminal_print_char(*ptr);
         ptr++;
     }

@@ -4,6 +4,13 @@
 #include <typedefs.h>
 #include <isr.h>
 
+
+#define PROCESS_STATE_IDLE 0x0A
+#define PROCESS_STATE_KILLED 0xB8
+#define PROCESS_STATE_NULL 0x13
+#define PROCESS_STATE_CREATED 0xB1
+#define MAX_PROCESS 16
+
 typedef  uint32_t pid_t ;
 typedef struct {
 	uint32_t eax;
@@ -15,25 +22,22 @@ typedef struct {
 	uint32_t esi;
 	uint32_t edi;
 	uint32_t eflags;
-	uint32_t cr3;
 	uint32_t eip;
 } context_t;
 
 typedef struct {
-	char process_name[512];
-	context_t regs;
+	context_t regs;	
+	char process_name[48];
 	pid_t pid;
-	void* stack;
 	uint32_t state;
 	uint32_t time_slice;
 } process_t;
 
-HYEO_EXPORT process_t* current_proc;
-HYEO_EXPORT registers_t saved_context;
-
+void init_scheduling(void);
 void schedule(void);
 pid_t allocate_pid(void);
-void create_process_routine(void* routine, char* name);
-void kernel_regs_switch(void);
+void create_process_from_address(uint32_t eip, char* proc_name, uint32_t stack_addr);
+process_t* get_next_process(void);
+HYEO_EXPORT void switch_context(context_t* old, context_t* new);
 
 #endif

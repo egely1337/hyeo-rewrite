@@ -6,9 +6,14 @@
 
 #include <timer.h>
 #include <terminal.h>
+#include <sched.h>
 
 HYEO_EXPORT void timer_handler(registers_t regs) {
-	
+	for(int i = 0; i < 5000; i++) {
+
+	}
+
+	schedule();
 }
 
 void timer_init(void) {
