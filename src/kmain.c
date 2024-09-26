@@ -8,25 +8,31 @@
 
 uint8_t terminal_buffer[TEXTMODE_HEIGHT*TEXTMODE_WIDTH*sizeof(textmode_char_t)*2] = {0};
 
-// Literally this routine does nothing
-// if this killed, then you must be panik!
-static void kernel_idle() {
-    while(1) {
-        // do nothing
-    }
-}
-
 // Okay, this is the entry routine of the kernel
 // we do some things so our kernel work well
 // like setting up descriptors, initialize scheduling, terminal or etc.
 int _kentry(multiboot *ebx) {
+    // init terminal
     terminal_buffer_init(&terminal_buffer[0]);  
     terminal_init();
+
+    // init gdt
     gdt_install();
+
+    // init isr
     isr_install();
+
+    // init timer
     timer_init();
+
+    // init scheduling
     init_scheduling();
-    create_process_from_address((uint32_t) kernel_idle, "kidle",  0xC00000);
+
+    // enable interrupts
     sti();
-    return 0;
-}
+
+    // kernel idle process
+    KERNEL_IDLE() {
+        __asm__ __volatile__ ("hlt");
+    };
+}   

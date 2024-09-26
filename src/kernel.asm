@@ -153,10 +153,8 @@ isr31:
 
 ;; -- INTERRUPTS END --
 
-;; SWITCH-CONTEXT START
+;; -- SWITCH-CONTEXT START --
 [global switch_context]
-[extern current_proc]
-[extern next_proc]
 
 
 ;; C declaration:
@@ -164,53 +162,52 @@ isr31:
 global switch_context
 switch_context:
     cli
-
     ;; get first argument to edx
     mov edx, [esp + 4] ; edx = from
     mov eax, [esp + 8] ; eax = to
     
     ; save registers
-    pusha
+    push ebx
+    push esi
+    push edi
+    push ebp
 
-    ;; eax
-    mov [edx + 0], eax
-    mov eax, [edx + 0]
+    ; save stack
+    mov [edx + 4], esp
 
-    ;; save and load ecx
-    mov [edx + 4], ebp
-    mov ebp, [eax + 4] 
+    ;; load stack
+    mov esp, [eax + 4]
 
-    ;; save and load edx
-    mov [edx + 8], edx
-    mov edx, [eax + 8]
+    ;; pop all
+    pop ebp
+    pop edi
+    pop esi
+    pop ebx
 
-    ;; save and load ebx
-    ;mov [edx + 12], ebx 
-    mov ebx, [eax + 12]
+    ;; ret
+    ret
 
-    ;; save and load esp
-    ;mov [edx + 16], esp
-    mov esp, [eax + 16]
+;; cdecl void new_task_setup(void);
+global new_task_setup
+new_task_setup:
+    ; update the segment registers
+    pop ebx
+    mov ds, bx
+    mov es, bx
+    mov fs, bx
+    mov gs, bx
+    
+    ; zero out registers so they dont leak to userspace
+    xor eax, eax
+    xor ebx, ebx
+    xor ecx, ecx
+    xor edx, edx
+    xor esi, esi
+    xor edi, edi
+    xor ebp, ebp
 
-    ;; save and load ebp
-    mov [edx + 20], ebp
-    mov ebp, [eax + 20]
-
-    ;; save and load ebp
-    mov [edx + 24], esi
-    mov esi, [eax + 24]
-
-    ;; save and load edi
-    mov [edx + 28], edi
-    mov edi, [eax + 28] 
-
-    ;; go back interrupts
-    sti
-
-    ;; jump!
-    jmp dword [eax+36]
-
-    ;; return registers
-    popa
-
+    ; exit the interrupt, placing us in the real task entry function
     iret
+
+
+;; -- SWITCH-CONTEXT END --
