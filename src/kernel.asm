@@ -161,7 +161,6 @@ isr31:
 ;; void switch_context(context_t* old, context_t* new);
 global switch_context
 switch_context:
-    cli
     ;; get first argument to edx
     mov edx, [esp + 4] ; edx = from
     mov eax, [esp + 8] ; eax = to
@@ -197,6 +196,15 @@ new_task_setup:
     mov fs, bx
     mov gs, bx
     
+    ; zero out registers so they dont leak to userspace
+    xor eax, eax
+    xor ebx, ebx
+    xor ecx, ecx
+    xor edx, edx
+    xor esi, esi
+    xor edi, edi
+    xor ebp, ebp
+
     ; exit the interrupt, placing us in the real task entry function
     iret
 
