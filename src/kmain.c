@@ -11,7 +11,9 @@ uint8_t terminal_buffer[TEXTMODE_HEIGHT*TEXTMODE_WIDTH*sizeof(textmode_char_t)*2
 // Okay, this is the entry routine of the kernel
 // we do some things so our kernel work well
 // like setting up descriptors, initialize scheduling, terminal or etc.
-int _kentry(multiboot *ebx) {
+HYEO_STATUS _kentry(
+    multiboot* multiboot // boot information header given by grub (ebx register)
+) {
     // init terminal
     terminal_buffer_init(&terminal_buffer[0]);  
     terminal_init();

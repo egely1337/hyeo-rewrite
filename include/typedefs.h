@@ -8,6 +8,7 @@ typedef unsigned short uint16_t;
 typedef unsigned int size_t;
 typedef char byte;
 typedef byte bool;
+typedef int HYEO_STATUS;
 
 #define hlt() while(1)
 #define cli() __asm__ __volatile__("cli");

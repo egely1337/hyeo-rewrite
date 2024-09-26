@@ -197,15 +197,6 @@ new_task_setup:
     mov fs, bx
     mov gs, bx
     
-    ; zero out registers so they dont leak to userspace
-    xor eax, eax
-    xor ebx, ebx
-    xor ecx, ecx
-    xor edx, edx
-    xor esi, esi
-    xor edi, edi
-    xor ebp, ebp
-
     ; exit the interrupt, placing us in the real task entry function
     iret
 
