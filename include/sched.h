@@ -6,6 +6,8 @@
 
 #define MAX_PROCESS 16
 
+typedef void(*kernel_task_t)();
+
 typedef  uint32_t pid_t ;
 typedef struct {
 	// callee saved regs
@@ -34,7 +36,7 @@ void initialize_init(void);
 void init_scheduling(void);
 void schedule(void);
 pid_t allocate_pid(void);
-void create_process_from_address(uint32_t eip, char* proc_name, uint32_t stack_addr);
+void create_process_from_address(kernel_task_t eip, char* proc_name, uint32_t stack_addr);
 process_t* get_next_process(void);
 HYEO_EXPORT void switch_context(process_t* old, process_t* new); 
 void new_task_setup(void);

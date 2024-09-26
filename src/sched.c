@@ -71,7 +71,7 @@ pid_t allocate_pid() {
  *	purpose: returns next process to schedule
  *	param: @eip 
  */
-void create_process_from_address(uint32_t eip, char* proc_name, uint32_t stack_addr) {
+void create_process_from_address(kernel_task_t eip, char* proc_name, uint32_t stack_addr) {
 	// allocate process id for new process
 	pid_t pid = allocate_pid();
 	process_t* process = &processes[pid];
@@ -88,7 +88,7 @@ void create_process_from_address(uint32_t eip, char* proc_name, uint32_t stack_a
 	kernel_stack->ebp = kernel_stack->edi = kernel_stack->esi = kernel_stack->ebx = 0;
 	kernel_stack->data_selector = 0x10;
 	kernel_stack->switch_addr = (uint32_t)new_task_setup;
-	kernel_stack->eip = eip;
+	kernel_stack->eip = (uint32_t)eip;
 	kernel_stack->cs = 0x08;
 	kernel_stack->eflags = 0x200; // enable interrupts
 

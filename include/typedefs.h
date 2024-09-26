@@ -19,7 +19,8 @@ typedef int HYEO_STATUS;
 #define false 0
 #define null 0
 #define KERNEL_IDLE() hlt()
-
+#define HYEO_OK 0
+#define HYEO_ERR 1
 
 #define HYEO_EXPORT extern
 #define __FORCEINLINE__ inline __attribute__((always_inline))

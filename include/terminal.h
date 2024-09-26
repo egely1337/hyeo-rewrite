@@ -29,10 +29,14 @@ typedef struct
 } __attribute__((packed)) terminal_vec2;
 
 typedef struct {
+    // Terminal position
     terminal_vec2 pos;
 
     // I know this is a mess, but believe me i am really fucking lazy.
     uint8_t* buffer;
+
+    // Text color
+    textmode_colors_e color;
 } __attribute__((packed)) terminal_t;
 
 void terminal_init(void);

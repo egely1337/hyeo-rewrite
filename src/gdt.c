@@ -16,8 +16,8 @@ void gdt_set_gate(
     unsigned char access, 
     unsigned char gran
 ) {
-    gdt[num].base_low = (base & 0xFFFF);
-    gdt[num].base_middle = (base >> 16) & 0xFF;
+    gdt[num].base_low = LOW_16(base);
+    gdt[num].base_middle = HIGH_16(base);
     gdt[num].base_high = (base >> 24) & 0xFF;
     gdt[num].limit_low = (limit & 0xFFFF);
     gdt[num].granularity = ((limit >> 16) & 0x0F);

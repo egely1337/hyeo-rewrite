@@ -1,7 +1,7 @@
 /*
  *  file: io.c
  *  author: egely1337
- *  purpose: in/out assembly functions 
+ *  purpose: in/out inline assembly functions 
  */
 
 #include <io.h>

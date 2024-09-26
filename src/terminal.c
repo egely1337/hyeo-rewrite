@@ -11,7 +11,8 @@ terminal_t terminal = {
         .x = 0,
         .y = 0
     },
-    .buffer = (void*)0
+    .buffer = (void*)0,
+    .color = COLOR_LIGHTGRAY
 };
 const size_t TEXTMODE_BYTE_LENGHT = 2*TEXTMODE_WIDTH*TEXTMODE_HEIGHT;
 
@@ -23,7 +24,7 @@ void terminal_init(void) {
     for(int i = 0; i < TEXTMODE_BYTE_LENGHT; i++) {
         textmode_char_t* ch = (textmode_char_t*)terminal.buffer + i;
         ch->ch = ' ';
-        ch->color = COLOR_MAGENTA;
+        ch->color = terminal.color;
     }
 }
 
@@ -42,10 +43,10 @@ void terminal_print_char(uint8_t ch) {
             terminal_update_cursor();
             break;
         default:
-            unsigned char* ptr = (unsigned char*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
+            uint8_t* ptr = (uint8_t*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
             textmode_char_t *character = (textmode_char_t*)ptr;
             character->ch = ch;
-            character->color = COLOR_MAGENTA;
+            character->color = terminal.color;
             terminal_advance();
             break;
     }
