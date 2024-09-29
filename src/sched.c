@@ -13,6 +13,9 @@
 const char *init_process_name = "init";
 
 
+// Is scheduling locked?
+bool is_sched_lock = false;
+
 // I know this a easy way to do a scheduling,
 // but i didn't even implemented a memory manager.
 // so i have to use this easy and cheap method
@@ -102,11 +105,33 @@ void create_process_from_address(kernel_task_t eip, char* proc_name, uint32_t st
  *	params: no params
  */
 void schedule() {
+	// Return if scheduling locked.
+	if(is_sched_lock == true) return;
+
 	process_t* old = current_proc;
 	process_t* next = get_next_process();
 	current_proc = next; 
 	switch_context(old, next);
 }
+
+
+/*
+ *	author: egely1337
+ *	purpose: locks scheduling
+ *	params: no params
+ */
+void sched_lock() {
+	is_sched_lock = true;
+}
+
+/*
+ *	author: egely1337
+ *	purpose: unlocks scheduling
+ *	params: no params
+ */
+void sched_unlock() {
+	is_sched_lock = false;
+} 
 
 /*
  *	author: egely1337

@@ -35,6 +35,10 @@ void terminal_buffer_init(uint8_t *buffer)
 }
 
 void terminal_print_char(uint8_t ch) {
+    if((terminal.pos.x * terminal.pos.y) >= 20) {
+        return;
+    }
+
     switch (ch)
     {
         case '\n':

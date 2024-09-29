@@ -9,9 +9,12 @@
 uint8_t terminal_buffer[TEXTMODE_HEIGHT*TEXTMODE_WIDTH*sizeof(textmode_char_t)*2] = {0};
 
 
-HYEO_STATUS print_hello_world(void) {
-    terminal_print_string("print_hello_world() is here!");
-    KERNEL_IDLE();
+HYEO_STATUS test_proc(void) {
+    KERNEL_IDLE() {
+        sched_lock();
+        terminal_print_string("task: a\n");
+        sched_unlock();
+    }
 }
 
 // Okay, this is the entry routine of the kernel
@@ -19,7 +22,7 @@ HYEO_STATUS print_hello_world(void) {
 // like setting up descriptors, initializing scheduling, terminal or etc.
 HYEO_STATUS _kentry(
     multiboot* multiboot // boot information header given by grub (ebx register)
-) {
+) { 
     // init terminal
     terminal_buffer_init(&terminal_buffer[0]);  
     terminal_init();
@@ -37,14 +40,14 @@ HYEO_STATUS _kentry(
     init_scheduling();
 
     // create example process (hardcoded esp 0xc00000)
-    create_process_from_address((kernel_task_t)print_hello_world, "task", 0xC00000);
+    create_process_from_address((kernel_task_t)test_proc, "test_proc", 0xC00000);
 
     // enable interrupts
     sti();
 
     // kernel idle process
     KERNEL_IDLE() {
-        __asm__ __volatile__ ("hlt");
+        terminal_print_string("task: kernel_idle\n");
     };
 
     // kernel should reach here.

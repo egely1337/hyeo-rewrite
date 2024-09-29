@@ -40,4 +40,6 @@ void create_process_from_address(kernel_task_t eip, char* proc_name, uint32_t st
 process_t* get_next_process(void);
 HYEO_EXPORT void switch_context(process_t* old, process_t* new); 
 void new_task_setup(void);
+void sched_lock();
+void sched_unlock();
 #endif
