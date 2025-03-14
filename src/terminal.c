@@ -19,6 +19,11 @@ terminal_t terminal = {
     .color = VGA_COLOR_BROWN,
 };
 
+/*
+ *  author: egely1337
+ *  purpose: Prints character
+ *  params: @ch (uint8_t)
+ */
 void terminal_print_char(uint8_t ch) {
     switch (ch) {
         case '\n':
@@ -42,6 +47,11 @@ void terminal_print_char(uint8_t ch) {
     }
 }
 
+/*
+ *  author: egely1337
+ *  purpose: Initialize terminal driver
+ *  params: none
+ */
 void terminal_init(void) {
     // Enable cursor
     terminal_cursor_enable();
@@ -54,6 +64,11 @@ void terminal_init(void) {
     }
 }
 
+/*
+ *  author: egely1337
+ *  purpose: Prints string to terminal
+ *  params: none
+ */
 void terminal_print_string(const char* str1) {
     uint8_t* ptr = (uint8_t*)str1;
 
@@ -65,11 +80,21 @@ void terminal_print_string(const char* str1) {
     terminal_flush();
 }
 
+/*
+ *  author: egely1337
+ *  purpose: Flush temporary terminal to VGA address
+ *  params: none
+ */
 void terminal_flush(void) {
     memcpy(VGA_ADDR, terminal.buffer, sizeof(terminal.buffer));
     terminal_update_cursor();
 }
 
+/*
+ *  author: egely1337
+ *  purpose: I/O enable VGA cursor
+ *  params: none
+ */
 void terminal_cursor_enable(void)
 {
     outb(0x3D4, 0x0A);
@@ -78,6 +103,11 @@ void terminal_cursor_enable(void)
 	outb(0x3D5, (inb(0x3D5) & 0xE0) | 15);
 }
 
+/*
+ *  author: egely1337
+ *  purpose: I/O update VGA cursor
+ *  params: none
+ */
 void terminal_update_cursor(void)
 {
     uint16_t pos = ((terminal.pos.y * VGA_ROWS) + terminal.pos.x);
