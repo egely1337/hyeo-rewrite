@@ -9,7 +9,7 @@
 
 /*
  *	author: egely1337
- *	purpose: rebooting the operating system (8042 reset)
+ *	purpose: rebooting the operating system (kb 8042 reset)
  *	params: no params
  */
 void reboot() {

@@ -122,34 +122,28 @@ isr_handler 27
 isr_handler 28
 isr_handler 29
 isr_handler 30
+isr_handler 31
 ;; -- ISR END --
 
 
-global isr31
-isr31:
-    cli
-    push byte 0
-    push byte 31
-    jmp isr_common_stub
-
-    ;; -- IRQ START --
-    irq_handler 0, 32
-    irq_handler 1, 33
-    irq_handler 2, 34
-    irq_handler 3, 35
-    irq_handler 4, 36
-    irq_handler 5, 37
-    irq_handler 6, 38
-    irq_handler 7, 39
-    irq_handler 8, 40
-    irq_handler 9, 41
-    irq_handler 10, 42
-    irq_handler 11, 43
-    irq_handler 12, 44
-    irq_handler 13, 45
-    irq_handler 14, 46
-    irq_handler 15, 47
-    ;; - IRQ END --
+;; -- IRQ START --
+irq_handler 0, 32
+irq_handler 1, 33
+irq_handler 2, 34
+irq_handler 3, 35
+irq_handler 4, 36
+irq_handler 5, 37
+irq_handler 6, 38
+irq_handler 7, 39
+irq_handler 8, 40
+irq_handler 9, 41
+irq_handler 10, 42
+irq_handler 11, 43
+irq_handler 12, 44
+irq_handler 13, 45
+irq_handler 14, 46
+irq_handler 15, 47
+;; - IRQ END --
 
 ;; -- INTERRUPTS END --
 

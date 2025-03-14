@@ -8,6 +8,7 @@ typedef unsigned short uint16_t;
 typedef unsigned int size_t;
 typedef char byte;
 typedef byte bool;
+typedef size_t uint32_t;
 typedef int HYEO_STATUS;
 
 #define hlt() while(1)

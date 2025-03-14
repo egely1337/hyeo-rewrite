@@ -6,22 +6,23 @@
 #include <io.h>
 
 #define VGA_ADDR (void*) 0xB8000
-#define TEXTMODE_WIDTH 80
-#define TEXTMODE_HEIGHT 50
+#define VGA_ROWS 80
+#define VGA_COLUMNS 50
+#define VGA_BYTE_LENGHT 0x1f40
 
 typedef enum {
-    COLOR_GREEN = 0x2,
-    COLOR_CYAN = 0x3,
-    COLOR_RED = 0x4,
-    COLOR_MAGENTA = 0x5,
-    COLOR_BROWN = 0x6,
-    COLOR_LIGHTGRAY = 0x7
+    VGA_COLOR_GREEN = 0x2,
+    VGA_COLOR_CYAN = 0x3,
+    VGA_COLOR_RED = 0x4,
+    VGA_COLOR_MAGENTA = 0x5,
+    VGA_COLOR_BROWN = 0x6,
+    VGA_COLOR_LIGHTGRAY = 0x7
 } textmode_colors_e;
 
 typedef struct {
     uint8_t ch;
     uint8_t color;
-} __attribute__((packed)) textmode_char_t;
+} __attribute__((packed)) vga_char_t;
 
 typedef struct 
 {
@@ -32,18 +33,17 @@ typedef struct {
     // Terminal position
     terminal_vec2 pos;
 
-    // I know this is a mess, but believe me i am really fucking lazy.
-    uint8_t* buffer;
+    // Buffer
+    vga_char_t buffer[VGA_COLUMNS][VGA_ROWS];
 
     // Text color
     textmode_colors_e color;
 } __attribute__((packed)) terminal_t;
 
+void terminal_print_string(const char* str);
 void terminal_init(void);
-void terminal_buffer_init(uint8_t* buffer);
-void terminal_update(void);
 void terminal_print_char(uint8_t ch);
-void terminal_print_string(const char* str1);
+void terminal_flush(void);
 void terminal_advance(void);
 void terminal_cursor_enable(void);
 void terminal_cursor_disable(void);

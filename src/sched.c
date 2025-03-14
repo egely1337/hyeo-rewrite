@@ -9,6 +9,9 @@
 #include <kpanic.h>
 
 
+// Get Timer Schedule
+HYEO_EXPORT uint32_t timer_to_schedule;
+
 // We use this for initializing init process.
 const char *init_process_name = "init";
 
@@ -34,7 +37,7 @@ pid_t process_num = 0;
  *	params: no params
  */
 void init_scheduling() {
-	memset(&processes[0], 0, sizeof processes * MAX_PROCESS);
+	memset(&processes[0], 0, sizeof processes);
 	initialize_init();
 }
 
@@ -72,15 +75,16 @@ pid_t allocate_pid() {
 /*
  *	author: egely1337
  *	purpose: returns next process to schedule
- *	param: @eip 
+ *	params: @eip 
  */
-void create_process_from_address(kernel_task_t eip, char* proc_name, uint32_t stack_addr) {
+void create_thread_address(kernel_task_t eip, char* proc_name, uint32_t stack_addr, process_priority_t priority) {
 	// allocate process id for new process
 	pid_t pid = allocate_pid();
 	process_t* process = &processes[pid];
 
 	// set up process name
 	process->pid = pid;
+	process->priority = priority;
 	
 	// set up kernel stack
 	uint8_t* kernel_esp = (uint8_t*)stack_addr;
@@ -108,12 +112,48 @@ void schedule() {
 	// Return if scheduling locked.
 	if(is_sched_lock == true) return;
 
-	process_t* old = current_proc;
-	process_t* next = get_next_process();
-	current_proc = next; 
-	switch_context(old, next);
+	// Check is process near deadline.
+	switch (current_proc->priority) {
+		// Check if current process priority high
+		case PROCESS_PRIORITY_HIGH:
+			if(timer_to_schedule > 1) {
+				timer_to_schedule = 0;
+				switch_to_next();
+			}
+			break;
+		// Check if current process priority medium
+		case PROCESS_PRIORITY_MEDIUM:
+			if(timer_to_schedule > 2) {
+				timer_to_schedule = 0;
+				switch_to_next();
+			}
+			break;
+		// Check if current process priority low
+		case PROCESS_PRIORITY_LOW:
+			if(timer_to_schedule > 3) {
+				timer_to_schedule = 0;
+				switch_to_next();
+			}
+			break;
+		// DO NOTHING.
+		default:
+			break;
+	}
 }
 
+/*
+ *	author: egely1337
+ *	purpose: switching next task
+ *	params: no params
+ */
+void switch_to_next(void) {
+	process_t* old = current_proc;
+	process_t* next = get_next_process();
+	current_proc = next;
+
+	// Switch context
+	switch_context(old, current_proc);
+}
 
 /*
  *	author: egely1337

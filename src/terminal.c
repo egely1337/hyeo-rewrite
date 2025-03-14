@@ -1,3 +1,8 @@
+// !!! IMPORTANT !!!
+// REWRITE THIS SHITCODE
+// THAT IS COMPLETELY CLUSTERFUCK!
+// !!! IMPORTANT !!!
+
 /*
  *  file: terminal.c
  *  author: egely1337
@@ -11,57 +16,57 @@ terminal_t terminal = {
         .x = 0,
         .y = 0
     },
-    .buffer = (void*)0,
-    .color = COLOR_LIGHTGRAY
+    .color = VGA_COLOR_BROWN,
 };
-const size_t TEXTMODE_BYTE_LENGHT = 2*TEXTMODE_WIDTH*TEXTMODE_HEIGHT;
-
-
-void terminal_init(void) {
-    if(terminal.buffer == (void*)0) hlt();
-
-    memset(terminal.buffer, 0, TEXTMODE_BYTE_LENGHT);
-    for(int i = 0; i < TEXTMODE_BYTE_LENGHT; i++) {
-        textmode_char_t* ch = (textmode_char_t*)terminal.buffer + i;
-        ch->ch = ' ';
-        ch->color = terminal.color;
-    }
-}
-
-void terminal_buffer_init(uint8_t *buffer)
-{
-    memset(buffer, 0, TEXTMODE_BYTE_LENGHT);
-    terminal.buffer = buffer;
-}
 
 void terminal_print_char(uint8_t ch) {
-    if((terminal.pos.x * terminal.pos.y) >= 20) {
-        return;
-    }
-
-    switch (ch)
-    {
+    switch (ch) {
         case '\n':
             terminal.pos.x = 0;
-            terminal.pos.y++;
-            terminal_update_cursor();
+            terminal.pos.y = terminal.pos.y + 1;
             break;
         default:
-            uint8_t* ptr = (uint8_t*)&terminal.buffer[0] + ((terminal.pos.y * TEXTMODE_WIDTH + terminal.pos.x) * 2);
-            textmode_char_t *character = (textmode_char_t*)ptr;
-            character->ch = ch;
-            character->color = terminal.color;
-            terminal_advance();
+            // If rows bigger than max rows, increase columns.
+            if(terminal.pos.x + 1 > VGA_ROWS) {
+                terminal.pos.x = 0;
+                terminal.pos.y = terminal.pos.y + 1;
+            }
+
+            // Append char
+            terminal.buffer[terminal.pos.y][terminal.pos.x].ch = ch;
+
+            // Advance
+            terminal.pos.x = terminal.pos.x + 1;
+
             break;
     }
 }
 
-void terminal_advance(void) {
-    if(terminal.pos.x + 1 > TEXTMODE_WIDTH) {
-        terminal.pos.x = 0;
-        terminal.pos.y++;
-    } else terminal.pos.x++;
+void terminal_init(void) {
+    // Enable cursor
+    terminal_cursor_enable();
 
+    // Initialize terminal
+    for(int columns = 0; columns < VGA_COLUMNS; columns++) {
+        for(int rows = 0; rows < VGA_ROWS; rows++) {
+            terminal.buffer[columns][rows].color = terminal.color;
+        }
+    }
+}
+
+void terminal_print_string(const char* str1) {
+    uint8_t* ptr = (uint8_t*)str1;
+
+    while(*ptr != '\0') {
+        terminal_print_char(*ptr);
+        ptr++;
+    }
+
+    terminal_flush();
+}
+
+void terminal_flush(void) {
+    memcpy(VGA_ADDR, terminal.buffer, sizeof(terminal.buffer));
     terminal_update_cursor();
 }
 
@@ -73,28 +78,9 @@ void terminal_cursor_enable(void)
 	outb(0x3D5, (inb(0x3D5) & 0xE0) | 15);
 }
 
-void terminal_update(void)
-{
-    uint8_t* ptr = VGA_ADDR;
-    memset(VGA_ADDR, 0, TEXTMODE_BYTE_LENGHT);
-    memcpy(VGA_ADDR, terminal.buffer, TEXTMODE_BYTE_LENGHT);
-}
-
-void terminal_print_string(const char *str1)
-{
-    uint8_t* ptr = (uint8_t*)str1;
-
-    while(*ptr != '\0' && *ptr != 0) {
-        terminal_print_char(*ptr);
-        ptr++;
-    }
-
-    terminal_update();
-}
-
 void terminal_update_cursor(void)
 {
-    uint16_t pos = ((terminal.pos.y * TEXTMODE_WIDTH) + terminal.pos.x);
+    uint16_t pos = ((terminal.pos.y * VGA_ROWS) + terminal.pos.x);
     outb(0x3D4, 0x0F);
 	outb(0x3D5, (uint8_t) (pos & 0xFF));
 	outb(0x3D4, 0x0E);

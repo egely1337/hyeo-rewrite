@@ -26,5 +26,7 @@ $(EXECUTABLE): $(OBJECTS)
 	@echo "LD 	$@"
 	@grub2-mkrescue -o $@ ./iso_root/
 	@echo "MKRESCUE 	$@"
+
+.PHONY = clean
 clean:
 	rm -f $(OBJDIR)/*.o $(EXECUTABLE)

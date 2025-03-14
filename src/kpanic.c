@@ -9,7 +9,8 @@
 //TODO: Make a full functionality panic function.
 void panic(const char* str1, ...) {
 	// print panic code
-	terminal_print_string(str1);
+	// !! UNIMPLEMENTED !!
+	//terminal_print_string(str1);
 	
 	// halt cpu
 	KERNEL_IDLE() {
