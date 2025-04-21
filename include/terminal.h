@@ -48,5 +48,6 @@ void terminal_advance(void);
 void terminal_cursor_enable(void);
 void terminal_cursor_disable(void);
 void terminal_update_cursor(void);
+void printf(const char* b1, ...);
 
 #endif

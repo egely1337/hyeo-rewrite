@@ -6,5 +6,8 @@ void memset(void* dst, uint8_t val, size_t length);
 int strlen(const char* str);
 void strcpy(char* dest, char* src);
 void strncpy(char* dest, char* src, int n);
+void strrev(char* str);
+char* itoa(uint32_t a);
+char* ithex(uint32_t a);
 #define MAX_STRING_LENGHT 512
 #endif

@@ -46,7 +46,7 @@ void schedule(void);
 pid_t allocate_pid(void);
 void create_thread_address(kernel_task_t eip, char* proc_name, uint32_t stack_addr, process_priority_t priority);
 process_t* get_next_process(void);
-HYEO_EXPORT void switch_context(process_t* old, process_t* new); 
+HYEO_EXPORT void switch_context(process_t* old, process_t* new);
 void new_task_setup(void);
 void sched_lock();
 void sched_unlock();

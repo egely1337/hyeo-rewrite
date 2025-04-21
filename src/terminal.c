@@ -76,8 +76,8 @@ void terminal_print_string(const char* str1) {
         terminal_print_char(*ptr);
         ptr++;
     }
-
-    terminal_flush();
+    
+   terminal_flush();
 }
 
 /*
@@ -110,9 +110,9 @@ void terminal_cursor_enable(void)
  */
 void terminal_update_cursor(void)
 {
-    uint16_t pos = ((terminal.pos.y * VGA_ROWS) + terminal.pos.x);
+    uint16_t pos = (terminal.pos.y * VGA_ROWS) + terminal.pos.x;
     outb(0x3D4, 0x0F);
-	outb(0x3D5, (uint8_t) (pos & 0xFF));
+	outb(0x3D5, (uint8_t) (pos & 0xFF)); // LOW
 	outb(0x3D4, 0x0E);
-	outb(0x3D5, (uint8_t) ((pos >> 8) & 0xFF));
+	outb(0x3D5, (uint8_t) ((pos >> 8) & 0xFF)); // HIGH
 }

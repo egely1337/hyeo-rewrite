@@ -1,3 +1,21 @@
+;; -- ENTRY --
+
+[extern _kentry] ;; __cdecl void __kentry(multiboot*);
+[global _entry]
+[bits 32]
+_entry:
+    ;; call stack
+    push ebp
+    mov ebp, esp
+
+    push ebx
+    call _kentry
+
+    mov ebp, esp
+    pop ebp
+
+;; -- ENTRY --
+
 
 ;; -- GDT START --
 [extern gp]

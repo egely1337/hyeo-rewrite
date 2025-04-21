@@ -1,7 +1,7 @@
 OUTPUT_FORMAT(elf32-i386)
 OUTPUT_ARCH(i386:i386)
 
-ENTRY(_kentry)
+ENTRY(_entry)
 
 INPUT(
     dump/kernel.o
@@ -17,6 +17,7 @@ INPUT(
     dump/timer.o
     dump/sched.o
     dump/reboot.o
+    dump/pmm.o
 )
 
 OUTPUT(
@@ -25,8 +26,8 @@ OUTPUT(
 
 SECTIONS {
     KERNEL_START = .;
-    . = 0x8000;
 
+    . = 0x8000;
     .text : ALIGN(0x1000){
 		*(.multiboot)
         *(.text)

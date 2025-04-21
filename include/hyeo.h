@@ -11,4 +11,5 @@
 #include <timer.h>
 #include <sched.h>
 #include <reboot.h>
+#include <pmm.h>
 #endif
