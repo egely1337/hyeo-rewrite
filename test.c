@@ -37,6 +37,9 @@ char* ithex(int a) {
     return res;
 }
 
+// i = 14; // Bit pattern 00001110
+// j = i >> 1; // here we have the bit pattern shifted by 1 thus we get 00000111 = 7 which is 14/2
+
 int main(int argc, char** argv) {
 	printf("%s\n", ithex(0xDEADBEEF));
 }

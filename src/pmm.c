@@ -8,46 +8,70 @@
 #include <pmm.h>
 #include <terminal.h>
 
-uint8_t* MemoryBitmap;
-uint32_t BlockCount;
-uint32_t MemorySize;
-uint32_t BitmapSize;
-uint32_t CurrentBlocks;
+struct {
+	uint32_t MemoryStartAddress;
+	uint8_t* BitmapAddress;
+	uint32_t BitmapSizeInBytes;
+	uint32_t MemorySize;
+	uint32_t BlockSize;
+} PhysicalMemoryManager;
 
 /*
  *	author: egely1337
  *	purpose: initialize pmm
  *	params: start_of_address (void*)
  */
-void initalize_pmm(
+void 		initalize_pmm(
 	uint32_t MemoryStartAddress,
 	uint32_t MemorySize
 ) {
-	MemoryBitmap = (uint8_t*)MemoryStartAddress;
-	MemorySize = MemorySize * 1000;
-	BlockCount = MemorySize / BLOCK_SIZE;
-	BitmapSize = BlockCount / BLOCKS_PER_BUCKET;
+	PhysicalMemoryManager.BitmapAddress = (uint8_t*)MemoryStartAddress;
+	PhysicalMemoryManager.MemorySize = (MemorySize * 1000); // KiB to bytes;
+	PhysicalMemoryManager.BlockSize = DIV_ROUND_UP(PhysicalMemoryManager.MemorySize, BLOCK_SIZE);
+	PhysicalMemoryManager.BitmapSizeInBytes = DIV_ROUND_UP(PhysicalMemoryManager.BlockSize, BLOCKS_PER_BYTE);
+	PhysicalMemoryManager.MemoryStartAddress = ((uint32_t)PhysicalMemoryManager.BitmapAddress + PhysicalMemoryManager.BitmapSizeInBytes);
 
-	if(BitmapSize * BLOCKS_PER_BUCKET < BlockCount) {
-		BitmapSize = BitmapSize + 1;
-	}
-
-    void* block1 = allocate_block();
-    void* block2 = allocate_block();
-
-    terminal_print_string(ithex((uint32_t)block1));
-    terminal_print_string("\n");
-    terminal_print_string(ithex((uint32_t)block2));
-    terminal_print_string("\n");
-
-	memset(MemoryBitmap, 0xFF, MemorySize);
+	// Mark of all with used flag.
+	memset(PhysicalMemoryManager.BitmapAddress, 0x00, PhysicalMemoryManager.BitmapSizeInBytes);
 }
+
+
 
 /*
  *	author: egely1337
- *	purpose: allocate block
+ *	purpose: Finds first free block.
+ *	params: start_of_address (void*)
  */
-void* allocate_block(void) {
-	CurrentBlocks++;
-	return (void*)MemoryBitmap + (BLOCK_SIZE * CurrentBlocks);
+uint32_t 	find_first_free_block(void) {
+	int idx = 0;
+
+	// Check for blocks.
+	for(; idx < PhysicalMemoryManager.BlockSize; ++idx) {
+		if(!ISSET(idx)) {
+			terminal_print_string(itoa(idx));
+			return idx;
+		}
+	}
+
+	return (uint32_t)INVALID_BLOCK_HANDLE;
+}
+
+
+/*
+ *	author: egely1337
+ *	purpose: Allocates a block.
+ */
+uint32_t 	allocate_block() {
+	uint32_t free_block = find_first_free_block();
+	SETBIT(free_block);
+	return free_block;
+}
+
+
+/*
+ *	author: egely1337
+ *	purpose: Frees a block.
+ */
+void 	free_block(uint32_t block) {
+	CLEARBIT(block);
 }

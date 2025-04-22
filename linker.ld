@@ -4,9 +4,9 @@ OUTPUT_ARCH(i386:i386)
 ENTRY(_entry)
 
 INPUT(
+    dump/kmain.o
     dump/kernel.o
     dump/kpanic.o
-	dump/kmain.o
 	dump/terminal.o
 	dump/string.o
 	dump/io.o

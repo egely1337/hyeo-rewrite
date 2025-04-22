@@ -10,8 +10,7 @@
 void panic(const char* str1, ...) {
 	// print panic code
 	// !! UNIMPLEMENTED !!
-	//terminal_print_string(str1);
-	
+
 	// halt cpu
 	KERNEL_IDLE() {
 		__asm__ __volatile__("hlt");
