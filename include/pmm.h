@@ -39,13 +39,12 @@ void initalize_pmm(
 );
 uint32_t 	allocate_block();
 uint32_t 	find_first_free_block(void);
-void 	free_block(uint32_t block);
+void 		free_block(uint32_t block);
 
 
-/*
- *	Physical Memory Manager:
- *		There is a bitmap that manages the physical memory, the first 20 bits per byte of this bitmap indicate where it points in 1 MB pages.
- * 		That way, you manage the memory.
- */
+
+
+
+
 
 #endif
