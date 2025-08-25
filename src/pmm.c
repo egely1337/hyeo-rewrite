@@ -48,7 +48,10 @@ uint32_t 	find_first_free_block(void) {
 	// Check for blocks.
 	for(; idx < PhysicalMemoryManager.BlockSize; ++idx) {
 		if(!ISSET(idx)) {
+			#ifdef DEBUG
 			terminal_print_string(itoa(idx));
+			#endif
+			
 			return idx;
 		}
 	}

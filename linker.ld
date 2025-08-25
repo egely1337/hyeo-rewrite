@@ -18,6 +18,8 @@ INPUT(
     dump/sched.o
     dump/reboot.o
     dump/pmm.o
+    dump/printf.o
+    dump/kalloc.o
 )
 
 OUTPUT(

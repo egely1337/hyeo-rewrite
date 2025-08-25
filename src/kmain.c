@@ -12,23 +12,16 @@
 HYEO_STATUS _kentry(
     multiboot* multiboot // Boot information header given by grub (ebx register)
 ) { 
-    // Init Gdt
+    // Initialize kernel.
     gdt_install();
-
-    // Init Isr
-    isr_install();
-
-    // Init terminal 
+    isr_install(); 
     terminal_init();
-
-    // Initialize PMM (hardcoded to KERNEL_END)
     initalize_pmm(multiboot->mmap_addr + 0x1000, (uint32_t)(multiboot->mem_lower | multiboot->mem_upper));
-
-    // Init timer
+    init_scheduling();
     timer_init();
 
-    // Init scheduling
-    init_scheduling();
+    // Hello
+    printf("Hello, World! %x  %x", 0x1337, 0x1337);
 
     // Enable interrupts
     sti();

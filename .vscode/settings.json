@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "terminal.h": "c",
+        "typedefs.h": "c",
+        "hyeo.h": "c",
+        "printf.h": "c",
+        "format": "c",
+        "ostream": "c",
+        "any": "c",
+        "array": "c",
+        "charconv": "c",
+        "compare": "c",
+        "functional": "c",
+        "ratio": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "variant": "c"
+    },
+    "C_Cpp.default.includePath": ["include/"]
+}

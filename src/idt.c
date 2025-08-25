@@ -13,7 +13,7 @@ idt_ptr idpt;
 void set_idt_gate(
     int num,
     uint32_t handler
-) {
+) { 
     idt[num].base_lo = LOW_16(handler);
     idt[num].base_hi = HIGH_16(handler);
     idt[num].sel = 0x08;

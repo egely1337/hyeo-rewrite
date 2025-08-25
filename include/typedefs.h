@@ -7,7 +7,7 @@ typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned int size_t;
 typedef char byte;
-typedef byte bool;
+typedef char bool;
 typedef size_t uint32_t;
 typedef int HYEO_STATUS;
 
@@ -22,6 +22,7 @@ typedef int HYEO_STATUS;
 #define KERNEL_IDLE() hlt()
 #define HYEO_OK 0
 #define HYEO_ERR 1
+#define nullptr (void*)0
 
 #define HYEO_EXPORT extern
 #define __FORCEINLINE__ inline __attribute__((always_inline))

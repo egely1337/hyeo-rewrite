@@ -4,7 +4,7 @@ ASFLAGS = -f elf32
 SRCDIR = src
 OBJDIR = dump
 INCLUDEDIR = include/
-CFLAGS = -ffreestanding -m32 -g -Ttext 0x8000 -c -I $(INCLUDEDIR)
+CFLAGS = -ffreestanding -std=c99 -m32 -g -Ttext 0x8000 -c -I $(INCLUDEDIR)
 SOURCES = $(shell find -w)
 SOURCES = $(wildcard $(SRCDIR)/*.c) $(wildcard $(SRCDIR)/*.asm) $(wildcard $(SRCDIR)/*.asm) 
 OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES)) $(patsubst $(SRCDIR)/%.asm,$(OBJDIR)/%.o,$(filter %.asm,$(SOURCES)))
@@ -24,7 +24,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.asm
 $(EXECUTABLE): $(OBJECTS)
 	@$(LD) -T linker.ld
 	@echo "LD 	$@"
-	@grub2-mkrescue -o $@ ./iso_root/
+	@grub-mkrescue -o $@ ./iso_root/
 	@echo "MKRESCUE 	$@"
 
 .PHONY = clean

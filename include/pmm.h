@@ -37,7 +37,7 @@ void initalize_pmm(
 	uint32_t MemoryStartAddress,
 	uint32_t MemorySize
 );
-uint32_t 	allocate_block();
+uint32_t 	alloc_block();
 uint32_t 	find_first_free_block(void);
 void 		free_block(uint32_t block);
 

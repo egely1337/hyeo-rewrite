@@ -3,6 +3,7 @@
 #include <multiboot.h>
 #include <typedefs.h>
 #include <terminal.h>
+#include <printf.h>
 #include <io.h>
 #include <gdt.h>
 #include <idt.h>
@@ -12,4 +13,5 @@
 #include <sched.h>
 #include <reboot.h>
 #include <pmm.h>
+#include <string.h>
 #endif
