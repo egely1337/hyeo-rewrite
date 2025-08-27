@@ -45,7 +45,6 @@ void parse_mmap(multiboot* multibootptr) {
 	}
 
 	/* printf("[kern] found region Size %u bytes, Address: %x\n", start->size, start->addr_low); */
-	initalize_pmm()
 }
 
 /*
