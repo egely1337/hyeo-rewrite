@@ -20,6 +20,7 @@ HYEO_STATUS _kentry(
     isr_install(); 
     terminal_init();
     acpi_init();
+    parse_mmap(multiboot);
     initalize_pmm(multiboot->mmap_addr + 0x1000, (uint32_t)(multiboot->mem_lower + multiboot->mem_upper));
     init_scheduling();
     timer_init();

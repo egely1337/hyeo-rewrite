@@ -11,6 +11,7 @@ typedef char bool;
 typedef size_t uint32_t;
 typedef int HYEO_STATUS;
 
+#define UINT32_MAX 0xFFFFFFFF
 #define hlt() while(1)
 #define cli() __asm__ __volatile__("cli");
 #define sti() __asm__ __volatile__("sti");

@@ -49,7 +49,7 @@ int strlen(const char *str)
 }
 
 char* itoa(uint32_t a) {
-    char* result;
+    char* result = (char*)'0';
     int i = 0;
 
     do {

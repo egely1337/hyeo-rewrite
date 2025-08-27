@@ -40,9 +40,11 @@ typedef struct {
 
 typedef struct {
     uint32_t size;
-    uint32_t addr;
-    uint32_t length;
-    uint32_t type;
+    uint32_t addr_low;
+    uint32_t addr_high;
+    uint32_t len_low;
+    uint32_t len_high;  
+    uint32_t type;    
 } __attribute__ ((packed)) mmap_t;
 
 typedef struct {

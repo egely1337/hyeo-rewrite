@@ -1,9 +1,9 @@
 #include <kalloc.h>
 
-//KBlock_t* start = nullptr;
+struct KBlock* start = nullptr;
 
 void kalloc_init(void) {
-    //start = alloc_block();
+    start = (struct KBlock*)alloc_block();
 }
 
 void kalloc(size_t n) {
