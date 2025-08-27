@@ -21,7 +21,7 @@ struct {
  *	purpose: initialize pmm
  *	params: start_of_address (void*)
  */
-void 		initalize_pmm(
+void initalize_pmm(
 	uint32_t MemoryStartAddress,
 	uint32_t MemorySize
 ) {
@@ -42,7 +42,7 @@ void 		initalize_pmm(
  *	purpose: Finds first free block.
  *	params: start_of_address (void*)
  */
-uint32_t 	find_first_free_block(void) {
+uint32_t find_first_free_block(void) {
 	int idx = 0;
 
 	// Check for blocks.
@@ -59,12 +59,30 @@ uint32_t 	find_first_free_block(void) {
 	return (uint32_t)INVALID_BLOCK_HANDLE;
 }
 
+/* TODO: Alloc N free blocks. */
+uint32_t allocnblocks(uint32_t n) {
+	uint32_t idx = 0;
+	uint32_t found = INVALID_BLOCK_HANDLE;
+
+	for(; idx < PhysicalMemoryManager.BlockSize; ++idx) {
+		if(!ISSET(idx)) {
+			for(int j = idx+1; j < (idx+n) - 1; ++j) {
+				if(ISSET(j)) break;
+				if(j >= (idx+n-1)) {
+					found = idx;
+				}
+			} 
+		}	
+	}
+
+	return found;
+}
 
 /*
  *	author: egely1337
  *	purpose: Allocates a block.
  */
-uint32_t 	allocate_block() {
+uint32_t allocate_block() {
 	uint32_t free_block = find_first_free_block();
 	SETBIT(free_block);
 	return free_block;
@@ -75,6 +93,6 @@ uint32_t 	allocate_block() {
  *	author: egely1337
  *	purpose: Frees a block.
  */
-void 	free_block(uint32_t block) {
+void free_block(uint32_t block) {
 	CLEARBIT(block);
 }

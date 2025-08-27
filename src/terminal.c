@@ -31,10 +31,15 @@ void terminal_print_char(uint8_t ch) {
             terminal.pos.y = terminal.pos.y + 1;
             break;
         default:
+            /* Check we out of characters */
+            if(TERMINAL_CHECK_MAX(terminal.pos.y * terminal.pos.x + 1)) {
+                /* TODO */
+            }
+
             // If rows bigger than max rows, increase columns.
             if(terminal.pos.x + 1 > VGA_ROWS) {
                 terminal.pos.x = 0;
-                terminal.pos.y = terminal.pos.y + 1;
+                terminal.pos.y++;
             }
 
             // Append char

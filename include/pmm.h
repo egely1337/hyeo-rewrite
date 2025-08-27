@@ -9,16 +9,19 @@
 #define BLOCKS_PER_BYTE (uint32_t)8
 
 
-
-#define BLOCK_TO_PHYS(idx) \
-	(void*)(PhysicalMemoryManager.BitmapAddress + (idx * BLOCK_SIZE))
-#define INVALID_BLOCK_HANDLE 0xFFFFFFFF
-
 /* 
  *	n = number
  *	d = divisior
  */
 #define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+
+
+/* Get total buckets as bytes */
+#define GET_BUCKET_BYTE() (uint32_t)((PhysicalMemoryManager.MemorySize / BLOCK_SIZE) / BLOCKS_PER_BYTE)
+
+#define BLOCK_TO_PHYS(idx) \
+	(void*)(PhysicalMemoryManager.BitmapAddress + DIV_ROUND_UP(GET_BUCKET_BYTE()) (idx * BLOCK_SIZE))
+#define INVALID_BLOCK_HANDLE 0xFFFFFFFF
 
 // Sets a bit block with 1
 #define SETBIT(i) \
@@ -37,9 +40,10 @@ void initalize_pmm(
 	uint32_t MemoryStartAddress,
 	uint32_t MemorySize
 );
-uint32_t 	alloc_block();
-uint32_t 	find_first_free_block(void);
-void 		free_block(uint32_t block);
+uint32_t alloc_block();
+uint32_t find_first_free_block(void);
+void free_block(uint32_t block);
+uint32_t allocnblocks(uint32_t n);
 
 
 

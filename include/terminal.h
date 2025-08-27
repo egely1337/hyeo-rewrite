@@ -8,7 +8,9 @@
 #define VGA_ADDR (void*) 0xB8000
 #define VGA_ROWS 80
 #define VGA_COLUMNS 50
+#define MAX_CHAR_ON_SCREEN 4000
 #define VGA_BYTE_LENGHT 0x1f40
+#define TERMINAL_CHECK_MAX(expected) (expected >= MAX_CHAR_ON_SCREEN) ? true : false
 
 typedef enum {
     VGA_COLOR_GREEN = 0x2,
