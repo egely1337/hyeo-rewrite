@@ -19,6 +19,7 @@ HYEO_STATUS _kentry(
     gdt_install();
     isr_install(); 
     terminal_init();
+    acpi_init();
     initalize_pmm(multiboot->mmap_addr + 0x1000, (uint32_t)(multiboot->mem_lower + multiboot->mem_upper));
     init_scheduling();
     timer_init();

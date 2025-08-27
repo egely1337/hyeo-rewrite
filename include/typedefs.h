@@ -26,5 +26,11 @@ typedef int HYEO_STATUS;
 
 #define HYEO_EXPORT extern
 #define __FORCEINLINE__ inline __attribute__((always_inline))
+#define HYEO_ASSERT(expr, ...) \
+    do {                    \
+        if(!(expr)) {       \
+                            \
+        }                   \
+    } while(0) 
 
 #endif

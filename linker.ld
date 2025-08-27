@@ -20,6 +20,7 @@ INPUT(
     dump/pmm.o
     dump/printf.o
     dump/kalloc.o
+    dump/acpi.o
 )
 
 OUTPUT(

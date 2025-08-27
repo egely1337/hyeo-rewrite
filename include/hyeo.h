@@ -8,6 +8,7 @@
 #include <gdt.h>
 #include <idt.h>
 #include <isr.h>
+#include <acpi.h>
 #include <kpanic.h>
 #include <timer.h>
 #include <sched.h>

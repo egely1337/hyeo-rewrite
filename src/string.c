@@ -16,6 +16,19 @@ void memcpy(void *dst, void *src, size_t length)
     }
 }
 
+uint8_t memcmp(void* src, void* b, int n) {
+    char* _src = (char*)src;
+    char* _b = (char*)b;
+    int j = 0;
+
+    while(j < n) {
+        if(_src[j] != _b[j]) return 1;
+        j++;
+    }
+
+    return 0;
+}
+
 void memset(void *dst, uint8_t val, size_t length)
 {
     byte* _dst = (byte*)dst;
