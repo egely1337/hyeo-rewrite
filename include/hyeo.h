@@ -7,7 +7,7 @@
 #include <io.h>
 #include <gdt.h>
 #include <idt.h>
-#include <isr.h>
+#include <irq.h>
 #include <acpi.h>
 #include <kpanic.h>
 #include <timer.h>

@@ -13,7 +13,7 @@ INPUT(
 	dump/gdt.o
 	dump/multiboot.o
     dump/idt.o
-    dump/isr.o
+    dump/irq.o
     dump/timer.o
     dump/sched.o
     dump/reboot.o

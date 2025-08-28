@@ -16,7 +16,7 @@ terminal_t terminal = {
         .x = 0,
         .y = 0
     },
-    .color = VGA_COLOR_BROWN,
+    .color = VGA_COLOR_MAGENTA,
 };
 
 /*

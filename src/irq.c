@@ -4,12 +4,13 @@
  *  purpose: interrupt service register file 
  */
 
-#include <isr.h>
+#include <irq.h>
 #include <idt.h>
 #include <io.h>
 #include <terminal.h>
 #include <kpanic.h>
 #include <sched.h>
+#include <reboot.h>
 
 IsrHandler _idt[256];
 
@@ -48,7 +49,7 @@ extern void isr30();
 extern void isr31();
 // isr end
 
-// irqs
+// irqs void 
 extern void irq0();
 extern void irq1();
 extern void irq2();
@@ -102,8 +103,6 @@ char *EXCEPTION_CODES[] = {
     "Reserved",
 };
 
-
-
 void isr_install(void) {
     outb(0x20, 0x11);
     outb(0xA0, 0x11);
@@ -115,7 +114,7 @@ void isr_install(void) {
     outb(0xA1, 0x01);
     outb(0x21, 0x0);
     outb(0xA1, 0x0); 
-    
+
     // ISR
     set_idt_gate(0, (uint32_t)isr0);
     set_idt_gate(1, (uint32_t)isr1);
@@ -167,7 +166,9 @@ void isr_install(void) {
     set_idt_gate(45, (uint32_t)irq13);
     set_idt_gate(46, (uint32_t)irq14);
     set_idt_gate(47, (uint32_t)irq15);
-    
+
+
+
     idt_install();
 }
 
@@ -175,16 +176,20 @@ void register_interrupt_handler(uint8_t n, IsrHandler handler) {
     _idt[n] = handler;
 }
 
-
 extern void isr_handler(registers_t regs) {
-    panic(EXCEPTION_CODES[regs.int_no]);
+   printf("Panic: %s\n"
+          "EAX: %x EBX: %x ECX: %x EDX: %x\n"
+          "EIP: %x ESP: %x\n\n", 
+    EXCEPTION_CODES[regs.int_no], regs.eax, regs.ebx, regs.ecx, regs.edx, regs.eip, regs.esp);
+   __asm__ ("hlt");
 }
 
 extern void irq_handler(registers_t regs) {
     if (regs.int_no >= 40) outb(0xA0, 0x20);
     outb(0x20, 0x20);
+
     if (_idt[regs.int_no] != 0) {
         IsrHandler handler = _idt[regs.int_no];
-        handler(regs);
+        handler(&regs);
     }
 }

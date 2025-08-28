@@ -1,5 +1,7 @@
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
+#include <kpanic.h>
+
 typedef unsigned int uint32_t;
 typedef uint32_t uintptr_t;
 typedef int int32_t;
@@ -30,7 +32,7 @@ typedef int HYEO_STATUS;
 #define HYEO_ASSERT(expr, ...) \
     do {                    \
         if(!(expr)) {       \
-                            \
+            panic("allah");         \
         }                   \
     } while(0) 
 

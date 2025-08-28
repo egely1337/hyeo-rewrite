@@ -1,8 +1,7 @@
-#ifndef ISR_H
-#define ISR_H
+#ifndef IRQ_H
+#define IRQ_H
 
 #include <typedefs.h>
-
 
 #define IRQ0 32
 #define IRQ1 33
@@ -22,6 +21,7 @@
 #define IRQ15 47
 
 // irqs end
+typedef void (*irq_t)();
 
 typedef struct {
    uint32_t ds;
@@ -30,7 +30,7 @@ typedef struct {
    uint32_t eip, cs, eflags, useresp, ss;
 } __attribute__((packed)) registers_t;
 
-typedef void (*IsrHandler)(registers_t);
+typedef void (*IsrHandler)(registers_t*);
 extern void isr_handler(registers_t);
 void isr_install();
 void register_interrupt_handler(uint8_t, IsrHandler);

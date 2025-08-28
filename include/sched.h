@@ -2,7 +2,7 @@
 #define SCHED_H
 
 #include <typedefs.h>
-#include <isr.h>
+#include <irq.h>
 
 #define MAX_PROCESS 16
 

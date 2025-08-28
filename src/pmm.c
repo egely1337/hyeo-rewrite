@@ -28,23 +28,39 @@ extern int KERNEL_START, KERNEL_END;
 		3. Start Physical Memory Manager
 */
 /* TODO: Combine parse_mmap() and initialize_pmm() together. */
-void parse_mmap(multiboot* multibootptr) {
+mmap_t* parse_mmap(multiboot* multibootptr) {
 	uint32_t kernel_start = (uint32_t)&KERNEL_START;
 	uint32_t kernel_end   = (uint32_t)&KERNEL_END;
-	uint32_t lenght = (uint32_t)kernel_end - kernel_start;
+	uint32_t kernel_len = (uint32_t)kernel_end - kernel_start;
 
 	void* mmap_end = (void*)multibootptr->mmap_addr + multibootptr->mmap_length;
 	mmap_t* entry = (mmap_t*)multibootptr->mmap_addr;
+	mmap_t* free = (mmap_t*)null;
+	uint32_t last = 0;
 
-	while(entry < mmap_end) {
-		if(entry->type == 1) {
+	while((uint32_t)entry < (uint32_t)mmap_end) {
+		if(entry->type == 1) 
+		{
+			if(last < entry->len_low + entry->len_high) {
+				free = entry;
+			}
+			#ifdef DEBUG
 			printf("[kern] Type: %u Usable size: %u bytes, start: %x\n", entry->type, entry->len_low + entry->len_high, entry->addr_low + entry->addr_high);
+			#endif
 		}
 
 		entry = (mmap_t*)((uint32_t)entry + entry->size + 4);
 	}
 
-	/* printf("[kern] found region Size %u bytes, Address: %x\n", start->size, start->addr_low); */
+	#ifdef DEBUG
+	printf("[kern] found region Size %u bytes, Address: %x\n", free->len_low, free->addr_low);
+	#endif
+
+	/* Modify, we dont want our memory manager overwrite our kernel space. */
+	free->addr_low += kernel_len;
+	free->len_low -= kernel_len;
+
+	return free;
 }
 
 /*
@@ -52,15 +68,19 @@ void parse_mmap(multiboot* multibootptr) {
  *	purpose: initialize pmm
  *	params: start_of_address (void*)
  */
-void initalize_pmm(
-	uint32_t MemoryStartAddress,
-	uint32_t MemorySize
-) {
-	PhysicalMemoryManager.BitmapAddress = (uint8_t*)MemoryStartAddress;
-	PhysicalMemoryManager.MemorySize = (MemorySize * 1000); // KiB to bytes;
+void initalize_pmm(multiboot* multibootptr) {
+	mmap_t* free = parse_mmap(multibootptr);
+	HYEO_ASSERT(free && "Kernel could not parse multiboot.");
+
+	PhysicalMemoryManager.BitmapAddress = (uint8_t*)free->addr_low;
+	PhysicalMemoryManager.MemorySize = (free->len_low); // KiB to bytes;
 	PhysicalMemoryManager.BlockSize = DIV_ROUND_UP(PhysicalMemoryManager.MemorySize, BLOCK_SIZE);
 	PhysicalMemoryManager.BitmapSizeInBytes = DIV_ROUND_UP(PhysicalMemoryManager.BlockSize, BLOCKS_PER_BYTE);
 	PhysicalMemoryManager.MemoryStartAddress = ((uint32_t)PhysicalMemoryManager.BitmapAddress + PhysicalMemoryManager.BitmapSizeInBytes);
+
+	#ifdef DEBUG
+		printf("[pmm] Memory Size: %u, Memory Start Address: %x\n", PhysicalMemoryManager.MemorySize, PhysicalMemoryManager.BitmapAddress);
+	#endif
 
 	// Mark of all with used flag.
 	memset(PhysicalMemoryManager.BitmapAddress, 0x00, PhysicalMemoryManager.BitmapSizeInBytes);

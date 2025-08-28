@@ -8,10 +8,7 @@
 
 //TODO: Make a full functionality panic function.
 void panic(const char* str1, ...) {
-	// print panic code
-	// !! UNIMPLEMENTED !!
-
-	// halt cpu
+	/* Halt CPU */
 	KERNEL_IDLE() {
 		__asm__ __volatile__("hlt");
 	}

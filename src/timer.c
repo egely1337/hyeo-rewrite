@@ -9,9 +9,11 @@
 #include <sched.h>
 
 uint32_t timer_to_schedule = 0;
-HYEO_EXPORT void timer_handler(registers_t regs) {
+HYEO_EXPORT void timer_handler(registers_t* regs) {
 	// Increase timer.
 	timer_to_schedule++;
+
+	printf("timer");
 
 	// Schedule
 	schedule();

@@ -35,8 +35,8 @@
 	((PhysicalMemoryManager.BitmapAddress[DIV_ROUND_UP(i, BLOCKS_PER_BYTE)] >> (i % BLOCKS_PER_BYTE)) & 0x1)
 
 
-void parse_mmap(multiboot* multibootptr);
-void initalize_pmm(uint32_t MemoryStartAddress, uint32_t MemorySize);
+mmap_t* parse_mmap(multiboot* multibootptr);
+void initalize_pmm(multiboot* multibootptr);
 uint32_t alloc_block();
 uint32_t find_first_free_block(void);
 void free_block(uint32_t block);
